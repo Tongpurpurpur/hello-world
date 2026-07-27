@@ -1,0 +1,3 @@
+__pycache__/
+*.pyc
+binance_perp_correlation_matrix.csv
