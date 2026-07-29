@@ -2,10 +2,11 @@
 just another repository
 Tongpurpurpur, wants to learn stuff and loves flat white
 
-## Flat White — a desktop pet 🐾
+## Clawde — an orange-crab desktop pet 🦀
 
-A tiny creature that lives on your screen. It wanders along the bottom,
-blinks, dozes off, and shows a little heart when you poke it. It's a
+A tiny rust-orange crab that lives on your screen. It scuttles along the
+bottom, blinks its eye-stalks, waves its claws, naps — and **when you click
+it, it opens Claude** ([claude.ai](https://claude.ai)) in your browser. It's a
 frameless, always-on-top, transparent window built with pure standard-library
 `tkinter`, so there is **nothing to install** — just Python.
 
@@ -24,19 +25,26 @@ install it from python.org and tick "Add Python to PATH".)
 
 | Action | What happens |
 | --- | --- |
-| Left-click the pet | Poke it — it perks up and shows a heart |
-| Drag the pet | Pick it up and drop it anywhere |
-| Right-click the pet | Menu: **Come here** / **Sit & stay** / **Quit** |
+| Left-click the crab | Opens Claude — the claws pop up and a heart appears |
+| Drag the crab | Pick it up and drop it anywhere |
+| Right-click the crab | Menu: **Open Claude** / **Come here** / **Sit & stay** / **Quit** |
 | Press `Esc` | Quit |
 
-Left on its own it decides what to do: strolls to a random spot, stands and
+Left on its own it decides what to do: scuttles to a random spot, stands and
 breathes, or curls up for a nap (watch for the floating `z`).
+
+### Make it yours
+
+- **Change what a click opens:** edit the one line `LAUNCH_URL = "https://claude.ai"`
+  near the top of [`pet.py`](pet.py) — point it at any URL.
+- **Recolor / reshape it:** the crab is drawn with canvas shapes (no image
+  assets); tweak the palette constants or the `draw()` method.
 
 ### Notes
 
 - The transparent, shaped window relies on a Windows-only tkinter feature
-  (`-transparentcolor`). On macOS/Linux it still runs, but the pet sits on a
+  (`-transparentcolor`). On macOS/Linux it still runs, but the crab sits on a
   solid square instead of floating freely.
-- It's a single file — [`pet.py`](pet.py). The pet is drawn with canvas shapes
-  (no image assets), so tweak the palette or shapes near the top of the file
-  to make it your own.
+- Heads-up: Claude doesn't have an official orange-crab mascot — the real ones
+  are the blue Claude Code cloud-robot and Anthropic's rust-orange sparkle.
+  This crab just borrows Claude's signature orange. 🦀

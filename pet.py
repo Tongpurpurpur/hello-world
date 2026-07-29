@@ -1,44 +1,53 @@
 """
-Flat White -- a tiny desktop pet.
+Clawde -- a tiny orange-crab desktop pet.
 
-A frameless, always-on-top, transparent window with a little creature that
-wanders along the bottom of your screen, blinks, dozes off, and reacts when
-you poke it. Pure standard-library tkinter, so there is nothing to install.
+A frameless, always-on-top, transparent window with a little rust-orange crab
+that scuttles along the bottom of your screen, blinks, waves its claws, naps,
+and -- when you click it -- launches Claude in your browser. Pure
+standard-library tkinter, so there is nothing to install.
 
 Controls
 --------
-  * Left-click the pet ....... poke it (it perks up and shows a heart)
-  * Drag the pet ............. pick it up and drop it anywhere
-  * Right-click the pet ...... menu: Come here / Sit & stay / Quit
+  * Left-click the crab ...... launch Claude (claude.ai)
+  * Drag the crab ............ pick it up and drop it anywhere
+  * Right-click the crab ..... menu: Open Claude / Come here / Sit & stay / Quit
   * Esc ...................... quit
 
 Runs best on Windows, where tkinter can paint a truly transparent window.
 See run_pet.bat for a double-click launcher.
 """
 
+import math
 import random
 import tkinter as tk
+import webbrowser
+
+# What a click opens. Point this at anything -- a URL (opens in your default
+# browser) works everywhere.
+LAUNCH_URL = "https://claude.ai"
 
 # The "chroma key" colour. Anything painted in this colour becomes fully
 # transparent on Windows, which is how we get a shaped, borderless pet.
-TRANSPARENT = "#ff00ff"
+TRANSPARENT = "#00ff00"
 
-SIZE = 140            # window is SIZE x SIZE pixels
+SIZE = 150            # window is SIZE x SIZE pixels
 FPS = 33              # animation tick in milliseconds (~30 fps)
 WALK_SPEED = 2.2      # pixels per tick while walking
 
-# A soft "flat white" palette, in honour of the README.
-BODY = "#f4f1ec"
-BODY_SHADE = "#ddd7cc"
-CHEEK = "#f6c9c0"
-DARK = "#3a3a3a"
-HEART = "#ff6b81"
+# Claude rust-orange crab palette.
+SHELL = "#e5703b"
+SHELL_DARK = "#c1531f"
+SHELL_LIGHT = "#f4a065"
+LEG = "#c1531f"
+EYE_WHITE = "#fff6ef"
+DARK = "#3a2118"
+HEART = "#ff8fa3"
 
 
 class Pet:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Flat White")
+        self.root.title("Clawde")
         self.root.overrideredirect(True)          # no title bar / borders
         self.root.attributes("-topmost", True)     # float above everything
         try:
@@ -46,7 +55,7 @@ class Pet:
             self.root.attributes("-transparentcolor", TRANSPARENT)
             self.root.attributes("-toolwindow", True)
         except tk.TclError:
-            pass  # non-Windows: the pet just shows on a solid square.
+            pass  # non-Windows: the crab just shows on a solid square.
 
         self.sw = self.root.winfo_screenwidth()
         self.sh = self.root.winfo_screenheight()
@@ -65,11 +74,12 @@ class Pet:
         # --- animation / behaviour state ------------------------------------
         self.facing = 1            # 1 = right, -1 = left
         self.state = "idle"        # idle | walking | sleeping | happy
-        self.target_x = self.x     # where a walking pet is heading
+        self.target_x = self.x     # where a walking crab is heading
         self.timer = 90            # ticks until the next decision
         self.bob = 0.0             # phase for the idle bob / walk cycle
         self.blink = 0             # >0 means eyes are currently closed
-        self.happy = 0             # >0 means showing a heart
+        self.happy = 0             # >0 means claws-up + heart (just launched)
+        self.cooldown = 0          # ticks before a click can launch again
         self.dragging = False
         self.drag_dx = 0
         self.drag_dy = 0
@@ -82,6 +92,7 @@ class Pet:
         self.root.bind("<Escape>", lambda e: self.root.destroy())
 
         self.menu = tk.Menu(self.root, tearoff=0)
+        self.menu.add_command(label="Open Claude", command=self.launch)
         self.menu.add_command(label="Come here", command=self.wander)
         self.menu.add_command(label="Sit & stay", command=self.sit)
         self.menu.add_separator()
@@ -106,10 +117,10 @@ class Pet:
 
     def on_release(self, event):
         self.dragging = False
-        # A small movement counts as a poke rather than a drag.
+        # A small movement counts as a click (launch), not a drag.
         moved = abs(event.x_root - self._press_x) + abs(event.y_root - self._press_y)
         if moved < 6:
-            self.poke()
+            self.launch()
         else:
             self.state = "idle"
             self.timer = 60
@@ -117,11 +128,19 @@ class Pet:
     def on_menu(self, event):
         self.menu.tk_popup(event.x_root, event.y_root)
 
-    def poke(self):
+    def launch(self):
+        # Wave the claws and open Claude, with a short cooldown so a stray
+        # double click doesn't spawn two tabs.
         self.state = "happy"
         self.happy = 24
         self.timer = 24
         self.blink = 0
+        if self.cooldown == 0:
+            self.cooldown = 45
+            try:
+                webbrowser.open(LAUNCH_URL, new=2)
+            except Exception:
+                pass
 
     def wander(self):
         self.state = "walking"
@@ -150,6 +169,8 @@ class Pet:
         if not self.dragging:
             self.bob += 0.18
             self.timer -= 1
+            if self.cooldown > 0:
+                self.cooldown -= 1
 
             if self.state == "walking":
                 dx = self.target_x - self.x
@@ -182,7 +203,6 @@ class Pet:
 
     # ---------------------------------------------------------------- render
     def draw(self):
-        import math
         c = self.canvas
         c.delete("all")
         cx = SIZE / 2
@@ -190,77 +210,83 @@ class Pet:
         walking = self.state == "walking"
         sleeping = self.state == "sleeping"
 
-        # Vertical bob: a gentle breathe when idle, a bouncier step when walking.
-        amp = 6 if walking else 2.5
+        amp = 5 if walking else 2.0
         bob = abs(math.sin(self.bob)) * amp
-        base = SIZE - 24          # ground line the feet rest on
-        top = base - 72 - bob     # top of the head
-        body_cx = cx
+        base = SIZE - 18                 # ground line the legs rest on
+        oy = -bob
+        cy = base - 30 + oy              # centre of the shell
 
         # Soft shadow on the "floor".
-        squash = 6 + bob
-        c.create_oval(cx - 34, base - 4, cx + 34, base + 8 - squash * 0.2,
-                      fill=BODY_SHADE, outline="")
+        c.create_oval(cx - 40, base - 2, cx + 40, base + 9 - bob * 0.2,
+                      fill=SHELL_DARK, outline="")
 
-        # Feet (little steps alternate while walking).
-        step = math.sin(self.bob) * (5 if walking else 0)
-        for side, phase in ((-1, step), (1, -step)):
-            fx = body_cx + side * 15
-            c.create_oval(fx - 9, base - 8 + phase, fx + 9, base + 6 + phase,
-                          fill=BODY, outline=BODY_SHADE)
-
-        # Body -- a rounded blob.
-        c.create_oval(body_cx - 40, top, body_cx + 40, base + 4,
-                      fill=BODY, outline=BODY_SHADE, width=2)
-
-        # Ears.
+        # --- legs (3 per side, shuffle while walking) -----------------------
+        shuffle = math.sin(self.bob * 2) * (4 if walking else 1)
         for side in (-1, 1):
-            ex = body_cx + side * 26
-            c.create_polygon(
-                ex - 12, top + 20, ex + 12, top + 20, ex + side * 4, top - 12,
-                fill=BODY, outline=BODY_SHADE, smooth=True,
-            )
+            for i, ly in enumerate((-8, 2, 12)):
+                sx = cx + side * 30
+                ex = cx + side * 46
+                phase = shuffle * (1 if i % 2 == 0 else -1) * side
+                c.create_line(sx, cy + ly, ex, cy + ly + 10 + phase,
+                              fill=LEG, width=4, capstyle="round")
 
-        eye_y = top + 34
-        if sleeping:
-            # Closed, content eyes + floating "z".
-            for side in (-1, 1):
-                ex = body_cx + side * 16
-                c.create_line(ex - 7, eye_y, ex + 7, eye_y, fill=DARK, width=3)
-            zz = int(self.bob * 4) % 3
-            c.create_text(body_cx + 34, top - 6 - zz * 6,
-                          text="z", fill=DARK, font=("Segoe UI", 10 + zz * 2, "bold"))
-        else:
-            closed = self.blink > 0
-            for side in (-1, 1):
-                ex = body_cx + side * 16
-                if closed:
-                    c.create_line(ex - 7, eye_y, ex + 7, eye_y, fill=DARK, width=3)
-                else:
-                    look = self.facing * 2
-                    c.create_oval(ex - 7, eye_y - 8, ex + 7, eye_y + 8,
-                                  fill="white", outline=DARK, width=1)
-                    c.create_oval(ex - 3 + look, eye_y - 3, ex + 3 + look, eye_y + 5,
-                                  fill=DARK, outline="")
-            # Cheeks.
-            for side in (-1, 1):
-                cxk = body_cx + side * 30
-                c.create_oval(cxk - 6, eye_y + 8, cxk + 6, eye_y + 18,
-                              fill=CHEEK, outline="")
+        # --- claws (raised when happy) --------------------------------------
+        raise_amt = 16 if self.state == "happy" else 0
+        for side in (-1, 1):
+            # arm
+            ax = cx + side * 34
+            ay = cy + 4 - raise_amt
+            c.create_line(cx + side * 22, cy, ax, ay,
+                          fill=SHELL, width=7, capstyle="round")
+            # pincer: two overlapping ovals forming a "C"
+            open_gap = 5 if (self.state == "happy" and self.happy % 8 < 4) else 2
+            c.create_oval(ax + side * -8, ay - 12, ax + side * 12, ay + 2 - open_gap,
+                          fill=SHELL, outline=SHELL_DARK)
+            c.create_oval(ax + side * -8, ay - 1 + open_gap, ax + side * 12, ay + 12,
+                          fill=SHELL, outline=SHELL_DARK)
 
-        # Mouth.
-        my = eye_y + 16
+        # --- shell ----------------------------------------------------------
+        c.create_oval(cx - 42, cy - 26, cx + 42, cy + 26,
+                      fill=SHELL, outline=SHELL_DARK, width=2)
+        # highlight sheen
+        c.create_oval(cx - 30, cy - 22, cx + 6, cy - 4, fill=SHELL_LIGHT, outline="")
+        # a couple of shell speckles
+        for dx, dy in ((-16, 10), (14, 8), (0, 16)):
+            c.create_oval(cx + dx - 2, cy + dy - 2, cx + dx + 2, cy + dy + 2,
+                          fill=SHELL_DARK, outline="")
+
+        # --- eyes on stalks -------------------------------------------------
+        for side in (-1, 1):
+            ex = cx + side * 14
+            stalk_top = cy - 34
+            c.create_line(ex, cy - 20, ex, stalk_top, fill=SHELL_DARK, width=4)
+            if sleeping or self.blink > 0:
+                c.create_line(ex - 6, stalk_top, ex + 6, stalk_top, fill=DARK, width=3)
+            else:
+                c.create_oval(ex - 7, stalk_top - 8, ex + 7, stalk_top + 6,
+                              fill=EYE_WHITE, outline=SHELL_DARK)
+                look = self.facing * 2
+                c.create_oval(ex - 3 + look, stalk_top - 4, ex + 3 + look, stalk_top + 3,
+                              fill=DARK, outline="")
+
+        # --- mouth ----------------------------------------------------------
+        my = cy - 4
         if self.state == "happy":
-            c.create_arc(body_cx - 9, my - 4, body_cx + 9, my + 12,
+            c.create_arc(cx - 10, my - 6, cx + 10, my + 10,
                          start=200, extent=140, style="arc", outline=DARK, width=2)
-        elif not sleeping:
-            c.create_line(body_cx - 5, my, body_cx, my + 4, body_cx + 5, my,
+        elif sleeping:
+            c.create_oval(cx - 3, my, cx + 3, my + 5, outline=DARK, width=2)
+            zz = int(self.bob * 4) % 3
+            c.create_text(cx + 34, cy - 40 - zz * 5, text="z", fill=SHELL_DARK,
+                          font=("Segoe UI", 10 + zz * 2, "bold"))
+        else:
+            c.create_line(cx - 6, my, cx, my + 3, cx + 6, my,
                           fill=DARK, width=2, smooth=True)
 
-        # Heart pop when poked.
+        # Heart pop when clicked/launched.
         if self.happy > 0:
-            hy = top - 10 - (24 - self.happy)
-            self._heart(body_cx + 26, hy, 7)
+            hy = cy - 44 - (24 - self.happy) + oy
+            self._heart(cx + 20, hy, 7)
 
     def _heart(self, x, y, r):
         c = self.canvas
