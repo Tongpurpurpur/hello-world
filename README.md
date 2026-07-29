@@ -10,6 +10,12 @@ it, it opens Claude** ([claude.ai](https://claude.ai)) in your browser. It's a
 frameless, always-on-top, transparent window built with pure standard-library
 `tkinter`, so there is **nothing to install** — just Python.
 
+![Clawde the crab: idle, scuttle, click-wave, nap](docs/clawde.gif)
+
+*(Captured on a headless Linux display, so it sits on a light square here. On
+Windows the background is fully transparent and the crab floats over your
+desktop.)*
+
 ### Run it (Windows)
 
 Double-click **`run_pet.bat`**, or from a terminal:
