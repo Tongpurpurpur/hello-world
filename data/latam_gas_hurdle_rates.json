@@ -1,0 +1,517 @@
+[
+  {
+    "ticker": "ENEV3 BZ",
+    "company_name": "Eneva SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No OFFICIAL, company-STATED hurdle rate / target IRR / minimum return / WACC / ROIC-ROE target relevant to gas-fired power, PPAs, or investments generally could be verified with a verbatim quote from an accessible official Eneva source. Accordingly status is none_found and the disclosures array is empty (per the rigor rule not to invent/infer a hurdle).\n\nIMPORTANT ACCESS LIMITATION: Eneva's most relevant official documents were NOT retrievable in this environment. (1) Eneva's current investor/corporate presentations - which multiple third-party sources indicate contain a slide titled \"Unlevered Internal Rate of Return (IRR) of Projects\" showing per-project unlevered IRRs for its gas-to-power assets (e.g. Azulao-Jaguatirica, Parnaiba V) - are hosted on api.mziq.com, which returned CONNECT 403 (blocked by this session's egress policy); do not treat this as evidence the disclosure does not exist. (2) The Eneva IR site (ri.eneva.com.br), the 2024 Integrated Report page (eneva.com.br/en/sustainability/ir2024/), and earnings-call transcript hosts (investing.com, marketscreener.com, yahoo finance, riotimesonline, brazilstockguide) all returned HTTP 403 (bot protection) to WebFetch. (3) CVM hosts were unreachable via direct curl (HTTP 000). A human analyst with browser/authenticated access should re-check: the latest Eneva corporate presentation \"Unlevered IRR of Projects\" slide; the Formulario de Referencia and the DFP/ITR financial-statement notes on impairment (which disclose the WACC/taxa de desconto used for value-in-use of the thermal and E&P cash-generating units - the most likely place an official WACC figure appears); and the latest Eneva Day / investor-day deck.\n\nDOCUMENTS ACTUALLY READ (official, accessible): Eneva Corporate Presentation October 2019 (s3.amazonaws.com/mz-filemanager, 37 slides) - the \"Returns / Investment Opportunity\" slide (p.27) is a qualitative peer risk-return comparison with NO numeric hurdle; no target IRR/WACC anywhere in the deck. Eneva Day November 2019 deck (s3.amazonaws.com/mz-filemanager, 100 slides) - full-text scan found NO IRR/WACC/taxa de retorno/discount-rate figures (it covers gas-market opening, Eneva COM trading, and the Parnaiba V and Azulao-Jaguatirica construction projects, but states no return threshold). Eneva Corporate Presentation January 2019 (s3, image-only, not text-extractable).\n\nTHIRD-PARTY FIGURES FOUND (NOT official, NOT company-stated hurdles - recorded here as context only, deliberately excluded from the disclosures array): (a) XP Investimentos equity research, 30-Nov-2025: \"a company that has been able to allocate ~R$25bn of capital since its 2017 restructuring, at average realized IRRs >20% in real terms\" - this is XP characterizing Eneva's realized track record, not a forward hurdle; XP's own YE26 target price implies a \"12.7% real IRR\". (b) JP Morgan (via Seu Dinheiro, 2026) reportedly cited an Eneva project \"real IRR of 10.5%\" - analyst estimate. (c) Brazil Journal (2023) reported market/BTG estimates of 40-60% real IRR for Eneva's two Eletrobras-auction thermal plants - analyst estimates. (d) AlphaSpread (screener) computes a WACC of ~16.8% and ROIC ~7.0% for Eneva - algorithmic third-party estimate, not official. None of these is a return threshold the company states it uses for investment decisions, so none was captured as a disclosure. Bottom line: Eneva does publicly present realized/expected per-project unlevered IRRs (an official gas-project return disclosure), but I could not access a current official document to quote the figures verbatim, and I found no company-stated minimum/target hurdle rate or official WACC that could be verified.",
+    "sources_checked": [
+      "Eneva Corporate Presentation October 2019 (official PDF, read in full): https://s3.amazonaws.com/mz-filemanager/6c663f3b-ae5a-4692-81d3-ab23ee84c1de/dc6f0e39-c49d-4e88-b591-4d98b1ed55f7_2019.09_Corporate%20presentation_VF_%20(ing).pdf - slide 27 'Investment Opportunity/Returns' qualitative only, no numeric hurdle",
+      "Eneva Day November 2019 (official PDF, 100 slides, full-text scanned): https://s3.amazonaws.com/mz-filemanager/6c663f3b-ae5a-4692-81d3-ab23ee84c1de/75c17687-5af1-4f61-8b0a-a4879343f8b0_07.11.19_Eneva_Day_consolidado_ingles.pdf - no IRR/WACC/return threshold figure found",
+      "Eneva Corporate Presentation January 2019 (official PDF, image-only): https://mz-filemanager.s3.amazonaws.com/6c663f3b-ae5a-4692-81d3-ab23ee84c1de/presentations/6bce2832aa0479bc283d5ba567ce6cca045932ff395adfc909643a61fc5ef48d/corporate_presentation_%E2%80%93_january_2019.pdf",
+      "Eneva IR - Presentations & Conference Calls page (official): https://ri.eneva.com.br/en/financial-information/presentations-and-conference-calls/ - HTTP 403 (bot protection), not readable",
+      "Eneva IR - Investor Kit (official): https://ri.eneva.com.br/en/financial-information/investor-kit/ - HTTP 403",
+      "Eneva 2024 Integrated Report (official): https://eneva.com.br/en/sustainability/ir2024/ - HTTP 403",
+      "Eneva current Corporate Presentation (official, contains 'Unlevered IRR of Projects' slide per third parties): https://api.mziq.com/mzfilemanager/v2/d/6c663f3b-ae5a-4692-81d3-ab23ee84c1de/229c7257-3e2d-a00f-6a84-7a6991a69a88 - CONNECT 403, blocked by egress policy (could not read)",
+      "Eneva Dec-2021 Eneva+Focus Business Combination deck (official): https://api.mziq.com/mzfilemanager/v2/d/6c663f3b-ae5a-4692-81d3-ab23ee84c1de/1336ad50-2226-a600-52d4-ffd9d38fb4d6 - api.mziq blocked",
+      "Eneva Q3 2025 earnings call transcript (Yahoo Finance): https://finance.yahoo.com/quote/ENEV3.SA/earnings/ENEV3.SA-Q3-2025-earnings_call-347926.html - HTTP 403",
+      "Eneva Q3 2025 / Q4 2025 / Q1 2026 earnings call transcripts (Investing.com): https://www.investing.com/news/transcripts/earnings-call-transcript-eneva-q3-2025-shows-record-ebitda-growth-93CH-4351835 and related - HTTP 403",
+      "Eneva Q1 2026 earnings call transcript (MarketScreener): https://www.marketscreener.com/news/transcript-eneva-s-a-q1-2026-earnings-call-may-14-2026-ce7f5bddde8df220 - HTTP 403",
+      "Eneva Corporate Presentation April 2022 / October 2022 (MarketScreener pages referencing 'Unlevered IRR of Projects'): https://www.marketscreener.com/quote/stock/ENEVA-S-A-14669712/news/Eneva-S-A-Corporate-Presentation-April-2022-40048638/ - HTTP 403",
+      "XP Investimentos equity research on Eneva, 30-Nov-2025 (THIRD-PARTY): https://researchxp1.s3.sa-east-1.amazonaws.com/2025.11.30+-+ENEV+IoC.pdf - '~R$25bn capital since 2017 at average realized IRRs >20% in real terms'; YE26 TP implies 12.7% real IRR",
+      "Seu Dinheiro article citing JP Morgan on Eneva (THIRD-PARTY): https://www.seudinheiro.com/2026/empresas/o-evento-de-r-8-por-acao-o-plano-da-eneva-enev3-para-destravar-valor-que-o-jp-morgan-considera-um-fenomeno-raro-ccgg/ - 'real IRR of 10.5%' (analyst)",
+      "Brazil Journal on Eneva Eletrobras-auction thermals (THIRD-PARTY): https://braziljournal.com/eneva-ganha-duas-termicas-no-leilao-da-eletrobras-tir-pode-chegar-a-60/ - 40-60% real IRR (analyst/market estimates)",
+      "AlphaSpread Eneva discount rate/WACC (THIRD-PARTY screener): https://www.alphaspread.com/security/bovespa/enev3/discount-rate - WACC ~16.8%, ROIC ~7.0% (computed, not official)"
+    ]
+  },
+  {
+    "company_name": "Colbun S.A.",
+    "ticker": "COLBUN CI",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated hurdle rate, target IRR, minimum return, WACC, spread-over-WACC, or ROIC/ROCE/ROE target could be located for Colbun S.A. — neither gas-specific, thermal/PPA-specific, nor company-wide.\n\nIMPORTANT ACCESS CONSTRAINT: The session's egress policy blocked all direct access to Colbun's official domain (www.colbun.cl) — every fetch of the corporate/investor pages and PDFs returned HTTP 403 at the proxy (recorded as a policy denial for host www.colbun.cl:443). Third-party transcript/press hosts that would carry official quotes (investing.com, marketscreener.com, finance.yahoo.com, ad-hoc-news.de, simplywall.st) also returned 403 through the proxy. So I could not open and read the primary-source PDFs (Memoria Integrada, earnings-call transcripts, presentation decks, bond prospectus) to confirm exact wording. Findings below rest on WebSearch result summaries only.\n\nWhat the searches did surface about Colbun's investment communications: disclosures are framed around CapEx guidance and project pipeline, not explicit return thresholds. 2025 total CapEx ~US$500m (~US$430m growth / ~US$70m maintenance); 2026 items include BESS Chaca (~US$50m), BESS Diego de Almagro Sur (~US$130m), Don Eduardo Substation (~US$24m). On profitability logic, management stated that BESS projects are always linked to a PPA and the company does not rely on the difference of prices for that project's profitability — a qualitative strategy statement, NOT a numeric hurdle rate. Growth pipeline: Junquillos wind (473 MW, Chile), Bayovar wind (660 MW) and Algarrobal PV (400 MW) in Peru; plus stated intent to enter Spain via a first acquisition then greenfield build-out. None of these carry a stated target IRR or WACC.\n\nNon-official / third-party figures (NOT company hurdle rates, therefore not recorded as disclosures): a simplywall.st analyst narrative cited a discount rate of ~12.13% (down from ~12.31%) used in their own valuation; a University of Chile student valuation thesis used a WACC in a DCF; research literature notes green bonds cut WACC ~25bps generically. Colbun's first international green bond (US$600m, 3.15% coupon, 2032) finances renewables — a financing cost, not an investment hurdle. All of these are external/analyst-derived, not a return threshold the company states it uses for investment decisions.\n\nRecommendation: to confirm definitively, the primary sources most likely to address this (and that I was blocked from reading) are the Memoria Integrada 2024 (colbun.cl/docs/.../2504_colbun_memoria2024_v9_.pdf) and the Q2/Q3/Q4 2025 earnings-call transcripts and presentation decks on colbun.cl/corporativo/inversionistas. Based on all accessible material, Colbun does not appear to publicly disclose an explicit numeric hurdle rate.",
+    "sources_checked": [
+      "WebSearch: Colbun investor presentation hurdle rate target IRR WACC investment return",
+      "WebSearch: Colbun WACC costo de capital rentabilidad objetivo inversiones (Spanish)",
+      "WebSearch: Colbun investor relations presentation 2025 capital allocation returns growth",
+      "WebSearch: Colbun earnings call transcript 2025 return on capital IRR projects PPA",
+      "WebSearch: Colbun Reporte Integrado 2024 Memoria Anual retorno objetivo WACC creacion de valor",
+      "WebSearch: Colbun double-digit / target return / IRR / return on capital projects renewables PPA",
+      "WebSearch: Colbun earnings call WACC / cost of capital / hurdle / return BESS PPA transcript",
+      "WebSearch: Colbun green bond prospectus 2024 2025 WACC regulated return",
+      "BLOCKED (HTTP 403 egress policy) WebFetch: www.colbun.cl/en/corporate/investors/financial-information",
+      "BLOCKED (HTTP 403 egress policy) WebFetch + curl: www.colbun.cl Memoria Integrada 2024 PDF (2504_colbun_memoria2024_v9_.pdf)",
+      "BLOCKED (HTTP 403) WebFetch: investing.com Colbun Q2 2025 earnings call transcript",
+      "BLOCKED (HTTP 403) WebFetch: marketscreener.com Colbun Q3 2025 earnings call transcript",
+      "BLOCKED (HTTP 403) WebFetch: finance.yahoo.com Colbun Q3 2025 earnings call transcript",
+      "BLOCKED (HTTP 403) WebFetch: ad-hoc-news.de Colbun stock earnings/hydro article",
+      "BLOCKED (HTTP 403) WebFetch: simplywall.st Colbun analyst narrative (discount rate)"
+    ]
+  },
+  {
+    "company_name": "Engie Brasil Energia SA",
+    "ticker": "EGIE3 BZ",
+    "status": "company_wide_hurdle_or_wacc",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "spread over WACC (IRR minus WACC)",
+        "value": "IRR minus WACC spread of at least 150-250 bps (reference ~200 bps), accompanied by an NPV/Capex value-creation criterion of ~20-25%",
+        "scope": "group-level",
+        "is_gas_specific": false,
+        "basis": "Not stated precisely. ENGIE group applies technology- and contract-differentiated WACCs; the portfolio is designed to deliver group WACC + ~200 bps. Pre/post-tax, real vs nominal and currency not specified by the company. NOTE: this is a controlling-parent (ENGIE SA, Paris-listed) group framework, NOT a figure stated by the Brazilian listed entity Engie Brasil Energia (EGIE3).",
+        "date_of_statement": "Reiterated at ENGIE group H1 2025 results (1 August 2025); framework set out earlier at ENGIE Capital Markets Day / investor updates (2023-2025)",
+        "source_type": "earnings call transcript / investor presentation (group-level, controlling parent ENGIE SA)",
+        "source_url": "https://www.engie.com/sites/default/files/assets/documents/2025-08/ENGIE%20H1%202025%20-%20Transcript.pdf",
+        "source_detail": "ENGIE SA (Paris-listed controlling parent) H1 2025 results transcript, capital-allocation/investment-discipline section. Canonical IR path (dated 2025-08) verified as a live official URL via WebSearch; an equivalent mirror exists at https://www.engie.com/app/uploads/2026/03/ENGIE-H1-2025-Transcript.pdf (the URL cited in the original draft). The 150-250 bps IRR-WACC spread plus ~20-25% NPV/Capex criterion is corroborated by multiple official ENGIE documents (H1 2025 transcript and fact sheets). GROUP LEVEL, not the Brazilian listed entity. Page-level verbatim could not be extracted (see verification_notes: WebFetch blocked by egress policy).",
+        "verbatim_quote": "Corroborated across multiple WebSearch results of official ENGIE documents (primary PDF could not be opened in this environment due to an egress-policy 403): ENGIE requires investments to match or exceed an IRR minus WACC spread of at least 150 to 250 basis points (reference ~200 bps), together with an NPV/Capex ratio of roughly 20-25%. [English; corroborated by search snippets of the ENGIE H1 2025 transcript and fact sheets, but not a page-level verified verbatim quote]",
+        "is_official": true,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "IRR (real, project-level, third-party estimate)",
+        "value": "~7-8% real IRR estimated for ENGIE's winning lots in ANEEL Transmission Auction 01/2026 (analyst estimate); described by analysts as modest / below the sector historical average",
+        "scope": "transmission",
+        "is_gas_specific": false,
+        "basis": "Real; project/asset-level IRR; pre/post-tax not stated; BRL. This is an analyst-estimated achieved return on new regulated (transmission) capex, NOT a company-stated hurdle. Deságio médio (average discount) on the lots reported at ~53%.",
+        "date_of_statement": "March 2026 (post-auction analyst commentary)",
+        "source_type": "third-party analyst/press (Guia do Investidor; also InfoMoney, Acionista, ADVFN)",
+        "source_url": "https://guiadoinvestidor.com.br/mercado/engie-egie3-leva-leilao-da-aneel-mas-retorno-decepciona-e-acende-alerta-no-mercado/",
+        "source_detail": "Brazilian financial press reporting analyst estimates of real IRR on ENGIE's 2026 transmission auction lots (lot 2 and sub-lots 3A-3D via ENGIE Transmissao de Energia Participacoes, ~R$1.6bn capex, RAP ~R$122.7m). Third-party, not company-disclosed. Included only as a directional benchmark of the returns ENGIE is accepting on new regulated transmission capex. Article confirmed live via WebSearch (page body could not be opened via WebFetch due to egress-policy 403).",
+        "verbatim_quote": "Per analyst commentary summarized in Brazilian press (WebSearch): 'os projetos podem entregar TIR real entre 7% e 8%, o que e considerado modesto para o setor' / 'the projects may deliver a real IRR between 7% and 8%, considered modest for the sector'. [Portuguese source with English translation; third-party, paraphrased/snippet-level, not page-level verbatim]",
+        "is_official": false,
+        "confidence": "low"
+      }
+    ],
+    "summary_note": "No GAS-specific hurdle rate was found for Engie Brasil Energia (EGIE3). The pointer described Pampa Sul as gas, but Pampa Sul is a COAL plant (Candiota/RS, 345 MW) that Engie Brasil SOLD to Starboard and Perfin for R$2.2bn, closing 31 May 2023, as part of its stated strategy to exit coal and become a 100% renewable generator (confirmed via WebSearch of Engie Brasil press releases and Exame/Brazil Journal). The company's current new-investment focus is renewables and greenfield transmission; there is no gas-fired generation strategy to which a gas hurdle would attach.\n\nEntity level (EGIE3): No explicitly stated numeric investment hurdle rate, target IRR, minimum return, spread over WACC, or ROIC/ROE target disclosed by Engie Brasil Energia itself was found. Its official materials describe qualitative 'disciplina financeira' and rigorous viability analysis but publish no numeric threshold.\n\nGroup level (controlling parent ENGIE SA): ENGIE group publicly applies an investment-discipline framework requiring an IRR minus WACC spread of ~150-250 bps (reference ~200 bps) plus an NPV/Capex creation criterion (~20-25%), with technology- and contract-differentiated WACCs. This is corroborated by multiple WebSearch snippets of the official ENGIE H1 2025 transcript and fact sheets. It is the best available disclosed return framework and is captured as scope='group-level'; because Engie Brasil is a consolidated subsidiary of ENGIE, this group criterion is the most relevant disclosed hurdle, but it is not stated by the Brazilian listed entity.\n\nThird-party (non-official) context: analysts estimate ~7-8% real IRR on ENGIE's 2026 ANEEL transmission auction lots (deságio ~53%); these are estimates, not company disclosures.\n\nSOURCING CAVEAT: WebFetch returned HTTP 403 (organization egress-policy denial) for EVERY host attempted (engie.com, engie.com.br, guiadoinvestidor.com.br, and others), so primary PDFs could not be opened for page-level verbatim extraction. Per the environment's proxy policy these denials must not be retried or routed around. WebSearch WAS functional and corroborated both figures via document snippets. A follow-up with working document access should confirm exact wording in the ENGIE H1 2025 transcript / Capital Markets Day deck and check the EGIE3 Formulario de Referencia investment-policy section.",
+    "sources_checked": [
+      "WebFetch ATTEMPTED but BLOCKED (HTTP 403 egress policy, not retried): https://www.engie.com/app/uploads/2026/03/ENGIE-H1-2025-Transcript.pdf (draft's group-transcript URL); https://guiadoinvestidor.com.br/mercado/engie-egie3-leva-leilao-da-aneel... (draft's transmission URL)",
+      "Proxy status confirmed: /__agentproxy/status shows connect_rejected 403 policy denials for api.mziq.com, rad.cvm.gov.br, web.archive.org, and Brazilian IR hosts",
+      "WebSearch (functional): ENGIE group capital allocation IRR minus WACC spread basis points investment criteria 2025 -> corroborates 150-250 bps / ~200 bps + NPV/Capex 20-25%",
+      "WebSearch: ENGIE H1 2025 results transcript IRR WACC spread -> confirms canonical URL https://www.engie.com/sites/default/files/assets/documents/2025-08/ENGIE%20H1%202025%20-%20Transcript.pdf and the 150-250 bps criterion",
+      "WebSearch: ENGIE investment criteria IRR WACC spread 150 250 bps NPV Capex value creation -> corroborates ~200 bps spread and 20-25% NPV/Capex from ENGIE fact sheets/presentations",
+      "WebSearch: Engie Brasil EGIE3 TIR real leilao transmissao ANEEL 2026 -> confirms ~7-8% real TIR analyst estimate, deságio ~53%, R$1.6bn investment, RAP R$122.7m",
+      "WebSearch: Engie Brasil Pampa Sul carvao Candiota 345 MW venda 2023 -> confirms Pampa Sul is COAL, 345 MW, sold to Starboard/Perfin, closed 31 May 2023, exit-coal/100%-renewable strategy"
+    ],
+    "verification_notes": "Re-checked both draft figures. WebFetch could not open either cited source_url (HTTP 403 organization egress-policy denials for all hosts, confirmed against the proxy status endpoint and not retried per policy), so I verified via WebSearch, which was functional and returned corroborating document snippets.\n\nFigure 1 (group IRR-WACC spread 150-250 bps + NPV/Capex 20-25%): CONFIRMED as an official ENGIE SA (parent) group framework by multiple independent WebSearch results of official ENGIE documents (H1 2025 transcript and fact sheets). Correction made: replaced the draft source_url with the more canonical official IR path (https://www.engie.com/sites/default/files/assets/documents/2025-08/ENGIE%20H1%202025%20-%20Transcript.pdf, dated 2025-08, matching the 1 Aug 2025 statement date) and noted the draft's app/uploads mirror as an equivalent. Kept is_official=true, is_gas_specific=false, scope=group-level, confidence=medium. Verbatim remains flagged as corroborated-but-not-page-level-verified because the PDF itself could not be opened. Reworded the verbatim to reflect it is a search-snippet corroboration rather than a 'reconstruction.'\n\nFigure 2 (~7-8% real IRR on 2026 transmission lots): CONFIRMED as a third-party analyst estimate reported in Brazilian press; WebSearch reproduced the Portuguese wording ('TIR real entre 7% e 8%... modesto para o setor'). Added the verified Portuguese verbatim + English translation and enriched source_detail with auction specifics (lot 2 + sub-lots 3A-3D, ~R$1.6bn, RAP R$122.7m, deságio ~53%). Kept is_official=false, confidence=low. Correctly NOT a company hurdle.\n\nis_gas_specific: both correctly false. No gas-specific hurdle exists; separately confirmed via WebSearch that Pampa Sul is a coal plant sold in May 2023, so the gas pointer is a misclassification (retained the correction in summary_note).\n\nNo well-supported figure was deleted and no new unsupported figure was added. Status retained as company_wide_hurdle_or_wacc: the only official hurdle is the ENGIE group WACC-spread framework (parent-level, company/group-wide), and the transmission IRR is a third-party project estimate. Overall confidence: medium for the group framework (well corroborated but no page-level verbatim due to blocked PDF access), low for the transmission estimate (third-party). Recommend a follow-up in an environment with working WebFetch to lock down the exact page/slide verbatim."
+  },
+  {
+    "ticker": "ENELGXCH CI",
+    "company_name": "Enel Generacion Chile SA",
+    "status": "company_wide_hurdle_or_wacc",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "spread over WACC",
+        "value": "at least +300 bps above WACC (>=300 basis points spread)",
+        "scope": "renewables (standalone battery storage / BESS)",
+        "is_gas_specific": false,
+        "basis": "not stated (spread over the company's WACC; pre/post-tax and real/nominal not specified; currency not specified). This is storage/BESS-specific, explicitly NOT gas.",
+        "date_of_statement": "Enel Chile Q1 2026 earnings call, late April 2026 (call/results reported ~29 Apr - 4 May 2026)",
+        "source_type": "earnings call transcript",
+        "source_url": "https://www.insidermonkey.com/blog/enel-chile-s-a-nyseenic-q1-2026-earnings-call-transcript-1753951/",
+        "source_detail": "Enel Chile S.A. (NYSE:ENIC; intermediate parent of the listed entity Enel Generacion Chile) Q1 2026 earnings call, management remarks on standalone battery storage (BESS) capital allocation. Stated at the Enel Chile parent level, not at the listed entity Enel Generacion Chile. Verbatim wording corroborated identically across multiple independent transcript aggregators (Insider Monkey, Investing.com, Yahoo Finance highlights, AlphaSpread, Benzinga). The originally cited Seeking Alpha URL (article/4897916) could not be located in searches and is replaced here with a corroborated transcript page. All transcript pages and the official Enel Chile webcast return 403 at the agent proxy gateway (CONNECT policy denial), so the primary webcast/official transcript was not directly read.",
+        "verbatim_quote": "As reported consistently across transcripts of the official call: management stated the company advances standalone BESS projects only when returns are \"at least 300 basis points above our WACC,\" and stress-tests them against more critical/stressed market scenarios. (Related: standalone BESS can be profitable, with higher profitability when the BESS is used to hybridize an existing power plant.) Exact primary-webcast wording could not be independently read due to proxy egress blocking (403).",
+        "is_official": true,
+        "confidence": "high"
+      },
+      {
+        "metric_type": "spread over WACC",
+        "value": "~300 bps average IRR-WACC spread targeted for new (renewables) projects",
+        "scope": "renewables (group Renewables business under Enel SpA plan)",
+        "is_gas_specific": false,
+        "basis": "not stated (average spread of project IRR over WACC; pre/post-tax and real/nominal not specified; group reports in EUR). Applies to the group Renewables business, not gas/thermal.",
+        "date_of_statement": "Capital Markets Day, 19-22 Nov 2024 (2025-2027 Strategic Plan)",
+        "source_type": "investor presentation",
+        "source_url": "https://www.enel.com/content/dam/enel-com/documenti/investitori/informazioni-finanziarie/2024/2025-2027-strategic-plan.pdf",
+        "source_detail": "Enel SpA (ultimate controlling group) 2025-2027 Strategic Plan / Capital Markets Day presentation. CORRECTION vs draft: the ~300 bps average IRR-WACC spread is specifically the target for the group RENEWABLES business (mirrored in Enel Americas' 2025-2027 generation plan), NOT a blanket group-wide-across-all-businesses metric as the draft implied by labeling it 'group-level'. Stated at Enel SpA group level for the renewables/generation business, not at Enel Chile or Enel Generacion Chile. The official enel.com PDF and enelamericas.com annexes return 403 at the proxy gateway; the figure and its renewables attribution are corroborated across multiple independent summaries of the official plan.",
+        "verbatim_quote": "As reported from Enel's official 2025-2027 Strategic Plan materials: the group Renewables business targets an approximately \"300 bps average spread between IRR and WACC\" for new projects (Enel Americas states the same ~300 bps average IRR-WACC spread for new generation projects). Exact slide text could not be independently read due to proxy egress blocking the enel.com PDF (403).",
+        "is_official": true,
+        "confidence": "medium"
+      }
+    ],
+    "summary_note": "No GAS-SPECIFIC and no thermal/PPA-specific hurdle rate was found for the listed entity Enel Generacion Chile SA. The listed entity does not publish a standalone investment hurdle; gas thermal is discussed only as fleet/margin optimization (high thermal availability offsetting weak hydrology, optimized gas sourcing driving Q1 2026 EBITDA +16%, LNG/Argentine gas contracts), with no stated required return for gas assets.\n\nTwo SPREAD-OVER-WACC hurdles were re-verified, both stated ABOVE the listed-entity level and both NON-gas:\n1) INTERMEDIATE PARENT (Enel Chile): on the Q1 2026 earnings call, management said standalone battery-storage (BESS) projects are advanced only when returns are 'at least 300 basis points above our WACC.' This is storage/renewables-specific. Verbatim wording confirmed identically across several independent transcript aggregators, so confidence raised to HIGH.\n2) ULTIMATE GROUP (Enel SpA): the 2025-2027 Strategic Plan / CMD (Nov 2024) states a ~300 bps average IRR-WACC spread target. CORRECTION: this is the group RENEWABLES business target (echoed in Enel Americas' generation plan), not a blanket all-business group metric; draft's 'group-level' scope re-labeled to renewables. Confidence MEDIUM (primary PDF not directly readable).\n\nThe two figures are consistent (~+300 bps over WACC as the applicable renewables/storage investment hurdle benchmark for the group/parent); there is NO gas carve-out disclosed anywhere. Status kept as company_wide_hurdle_or_wacc since the only hurdles found are parent/group renewables-and-storage spread targets, not gas- or thermal-specific.\n\nOther context (NOT captured as disclosures): (a) VAD 2024-2028 regulated real post-tax WACC of 6% applies to a reference distribution model company (relevant to Enel Distribucion, a regulated distribution sibling), not to the gas/thermal generation entity. (b) ~8.8% WACC for Enel Chile on GuruFocus/AlphaSpread is a third-party analyst estimate, not company-stated.\n\nSOURCING CAVEAT: The agent proxy gateway returned 403 (CONNECT policy denial) for ALL direct WebFetch attempts — enel.com and enelamericas.com strategic-plan PDFs, Enel Chile IR/webcast, and every third-party transcript page (Insider Monkey, Investing.com, Yahoo, Benzinga, AlphaSpread, GuruFocus, web.archive.org). Verification therefore relied on WebSearch result summaries, which returned the BESS '300 basis points above our WACC' quote verbatim and consistently, and confirmed the plan's 300 bps IRR-WACC spread as a renewables target. Both figures originate from official company sources (an official earnings call and the official Strategic Plan); exact primary-document text was not directly read.",
+    "sources_checked": [
+      "WebFetch BLOCKED (403 proxy CONNECT policy denial): https://seekingalpha.com/article/4897916-enel-chile-s-a-enic-q1-2026-earnings-call-transcript (original draft URL for item 1; also did not surface in searches)",
+      "WebFetch BLOCKED (403 proxy CONNECT policy denial): https://www.enel.com/content/dam/enel-com/documenti/investitori/informazioni-finanziarie/2024/2025-2027-strategic-plan.pdf (official plan, item 2)",
+      "WebFetch BLOCKED (403 proxy CONNECT policy denial): https://www.insidermonkey.com/blog/enel-chile-s-a-nyseenic-q1-2026-earnings-call-transcript-1753951/",
+      "WebFetch BLOCKED (403 proxy CONNECT policy denial): https://www.enelamericas.com/content/dam/enel-americas/investor/strategic-plan/2024/ENEL-AMERICAS-STRATEGIC-PLAN-2025-2027-ANNEXES.pdf",
+      "curl proxy status confirmed gateway-level 403 CONNECT denials for external hosts (web.archive.org and others), explaining all WebFetch 403s",
+      "WebSearch: Enel Chile Q1 2026 earnings call BESS '300 basis points above' WACC standalone battery (CONFIRMED verbatim: standalone BESS advanced only when returns 'at least 300 basis points above our WACC'; ~0.5 GW / 3 projects; stress-tested)",
+      "WebSearch: Enel 2025-2027 strategic plan IRR-WACC spread '300 basis points' new projects (CONFIRMED ~300 bps average IRR-WACC spread; attributed to RENEWABLES business and Enel Americas generation, not blanket group-wide)",
+      "WebSearch: Enel strategic plan 2025-2027 renewables '300 bps' spread IRR WACC value creation slide (CONFIRMED 300 bps IRR-WACC spread is the renewables business value-creation target; EUR43bn capex, EUR12bn renewables)",
+      "WebSearch: Enel Chile Q1 2026 transcript BESS hybridize WACC (CONFIRMED BESS >=300 bps above WACC; VAD 2024-2028 6% real post-tax regulated WACC for reference distribution model company; speakers Conticelli/Palumbo/Klemes)"
+    ],
+    "verification_notes": "Re-checked both draft figures. Direct WebFetch to every primary and third-party URL returned HTTP 403 at the agent proxy gateway (verified via curl $HTTPS_PROXY/__agentproxy/status: CONNECT policy denials), so verification relied on WebSearch result summaries, which quoted the material wording directly.\n\nITEM 1 (BESS >=300 bps above WACC): CONFIRMED. The verbatim 'at least 300 basis points above our WACC' for standalone BESS appeared identically across multiple independent transcript aggregators (Insider Monkey, Investing.com, Yahoo, Benzinga, AlphaSpread). is_gas_specific correctly false (it is storage/renewables, not gas). Corrections made: (a) scope refined from 'renewables' to 'renewables (standalone battery storage / BESS)'; (b) source_url changed from the unverifiable Seeking Alpha article/4897916 (did not surface in any search) to a corroborated Insider Monkey transcript page; (c) confidence raised medium -> high given consistent multi-source verbatim corroboration; (d) date softened to 'late April 2026' as one aggregator dated the transcript 2026-05-04 vs draft's 29 Apr 2026. is_official kept true (statement made by management on the official Enel Chile call), with the caveat that the cited URL is a third-party transcript because the official webcast is egress-blocked.\n\nITEM 2 (~300 bps IRR-WACC spread, strategic plan): CONFIRMED as to the figure, but SCOPE CORRECTED. Multiple searches show the ~300 bps average IRR-WACC spread is specifically the group RENEWABLES business target (mirrored by Enel Americas for new generation projects), not a blanket all-business 'group-level' metric as the draft's scope label implied. Scope changed to 'renewables (group Renewables business under Enel SpA plan)' and source_detail annotated with the correction. is_gas_specific correctly false. Confidence kept medium because the official enel.com PDF was not directly readable (403) and the exact slide text/number could not be captured verbatim. Official enel.com URL retained as the correct primary source.\n\nNo figures deleted; no new figures added. No gas-specific or thermal-specific hurdle exists for the listed entity; status kept company_wide_hurdle_or_wacc (the only hurdles found are parent/group renewables-and-storage spread targets). Non-disclosure context (6% regulated distribution WACC; third-party ~8.8% WACC estimate) retained in summary_note but not elevated to disclosures. Overall confidence: HIGH that ~+300 bps over WACC is the applicable renewables/storage hurdle at the parent/group level; HIGH that no gas-specific hurdle is disclosed."
+  },
+  {
+    "ticker": "CELSIA CB",
+    "company_name": "Celsia S.A. E.S.P.",
+    "status": "company_wide_hurdle_or_wacc",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "ROIC/ROCE target expressed as a spread over WACC",
+        "value": ">200 bps above WACC (target ROCE = WACC + >200 bps)",
+        "scope": "company-wide",
+        "is_gas_specific": false,
+        "basis": "not stated (pre/post-tax and real/nominal not specified; ROCE/WACC in COP implied)",
+        "date_of_statement": "Investor-relations page current as of 2025-2026 (objective reiterated in 2024 results and 2025 shareholder-assembly / EnergizarC communications)",
+        "source_type": "website",
+        "source_url": "https://www.celsia.com/es/inversionistas/celsia/por-que-invertir-en-celsia/",
+        "source_detail": "Celsia investor-relations page '¿Por qué invertir en Celsia?'. Verbatim quote confirmed via WebSearch snippet of this exact official URL; direct WebFetch/curl blocked by organization egress policy (proxy CONNECT 403 on www.celsia.com), so page/section could not be cited from the rendered document.",
+        "verbatim_quote": "Celsia tiene como meta, en la búsqueda constante de maximizar el ROCE (retorno sobre el capital invertido), estar por encima de 200 puntos básicos del WACC (costo promedio ponderado del capital). / EN: Celsia's goal, in its constant pursuit of maximizing ROCE (return on invested capital), is to be more than 200 basis points above the WACC (weighted average cost of capital).",
+        "is_official": true,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "ROIC minus WACC spread target (segment)",
+        "value": "> 118 bps ROIC-WACC spread (target for the Energy Services / 'Servicios de energía' business)",
+        "scope": "Energy Services segment ('Servicios de energía') — not company-wide",
+        "is_gas_specific": false,
+        "basis": "not stated",
+        "date_of_statement": "2024 results / 2025 shareholder assembly (EnergizarC value-creation program)",
+        "source_type": "press release",
+        "source_url": "https://www.celsia.com/es/noticias/en-la-asamblea-celsia-profundizo-sobre-su-valor-fundamental-y-resalto-que-el-retorno-total-al-accionista-tsr-en-el-2024-fue-del-362/",
+        "source_detail": "Celsia press release on the 2024 shareholder assembly / EnergizarC program; segment-level target for the 'Servicios de energía' (Energy Services) business. Confirmed via WebSearch snippet of this exact official URL; direct WebFetch blocked by organization egress policy (proxy CONNECT 403 on www.celsia.com).",
+        "verbatim_quote": "Buscan la expansión del spread entre ROIC vs. WACC para que sea mayor a 118 puntos básicos en el negocio de Servicios de energía. / EN: They seek to expand the ROIC vs. WACC spread to be greater than 118 basis points in the Energy Services business.",
+        "is_official": true,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "WACC (stated actual) with ROCE",
+        "value": "WACC 13.02%; ROCE 14.33% (positive differential of 131 bps), FY2022",
+        "scope": "company-wide",
+        "is_gas_specific": false,
+        "basis": "not stated (COP, nominal implied; pre/post-tax not specified)",
+        "date_of_statement": "FY2022 results (reported early 2023)",
+        "source_type": "press release",
+        "source_url": "https://www.celsia.com/es/noticias/resultados-de-celsia-en-2022/",
+        "source_detail": "Celsia FY2022 results press release ('Resultados de Celsia en 2022'). Figures (ROCE 14.33% vs WACC 13.02%, +131 bps) confirmed via WebSearch snippet of this exact official URL; direct WebFetch blocked by organization egress policy (proxy CONNECT 403 on www.celsia.com).",
+        "verbatim_quote": "Al cierre de 2022, y a pesar del fuerte incremento de las tasas de interés, Celsia mantuvo un diferencial positivo de 131 puntos básicos entre el ROCE de 14,33% frente a un WACC de 13,02%. / EN: At year-end 2022, and despite the sharp rise in interest rates, Celsia maintained a positive differential of 131 basis points between a ROCE of 14.33% and a WACC of 13.02%.",
+        "is_official": true,
+        "confidence": "medium"
+      }
+    ],
+    "summary_note": "Celsia does NOT disclose any gas-specific or thermal-project-specific hurdle rate. No target IRR/TIR or required return is published for its gas/thermal assets (Tesorito 200 MW gas plant, Zona Franca/Termoflores — which was sold to EnfraGen in 2019 for USD 420m — or any PPA), and no gas-specific RAB/regulated return was found. A dedicated WebSearch for Tesorito/Zona Franca/Termoflores returns/TIR/hurdle rate surfaced only transaction and capacity news, no project return target. Celsia's investment-decision framework is a company-wide capital-return hurdle expressed as a spread over WACC: the stated objective is to maximize ROCE and keep it MORE THAN 200 bps above WACC, published on the official investor page '¿Por qué invertir en Celsia?' and reiterated in 2024-results / 2025 shareholder-assembly (EnergizarC) communications. A related segment-level target of a ROIC-WACC spread >118 bps applies specifically to the Energy Services ('Servicios de energía') business (this item was mislabeled 'company-wide' in the draft — corrected to segment scope). As an actual-WACC benchmark, the FY2022 results state WACC 13.02% / ROCE 14.33% (+131 bps). None of the three figures is gas-specific (is_gas_specific=false for all, unchanged and confirmed). Status remains company_wide_hurdle_or_wacc. Note: search snippets also surfaced a current ROIC-WACC spread of ~127 bps (2024) and an October 2025 'Celsia Investor Day 2025' broker deck (Casa de Bolsa) — not captured as separate disclosures, but a reviewer with unrestricted access should check the Investor Day 2025 materials and the 2024/2025 Reporte Integrado for the latest stated WACC and any refined return targets. SOURCING CAVEAT: all celsia.com pages, the Grupo Argos Celsia 2024 integrated-report PDF, the Davivienda Corredores PDFs, and the Casa de Bolsa Investor Day PDF could not be opened — celsia.com and related IR hosts are blocked by this session's organization egress policy (verified: proxy status endpoint logs 'www.celsia.com:443 gateway answered 403 to CONNECT — policy denial'; per proxy policy such denials must not be routed around). Casa de Bolsa returned a DNS ENOTFOUND. Verbatim quotes and figures were therefore corroborated via WebSearch result snippets that reproduce the text of the exact official celsia.com URLs; confidence is held at medium for all three because the primary documents could not be opened and page/slide-cited directly.",
+    "sources_checked": [
+      "https://www.celsia.com/es/inversionistas/celsia/por-que-invertir-en-celsia/ (official IR page — ROCE >200 bps above WACC objective; verified via WebSearch snippet; direct WebFetch/curl blocked — proxy CONNECT 403 policy denial on www.celsia.com)",
+      "https://www.celsia.com/es/noticias/resultados-de-celsia-en-2022/ (official FY2022 results — WACC 13.02%, ROCE 14.33%, +131 bps; verified via WebSearch snippet; WebFetch blocked 403)",
+      "https://www.celsia.com/es/noticias/en-la-asamblea-celsia-profundizo-sobre-su-valor-fundamental-y-resalto-que-el-retorno-total-al-accionista-tsr-en-el-2024-fue-del-362/ (official — 2024 assembly, ROIC-WACC spread >118 bps for Energy Services segment, current spread ~127 bps; verified via WebSearch snippet; WebFetch blocked 403)",
+      "https://www.celsia.com/es/inversionistas/celsia/energizarc/ (official EnergizarC value-creation program page — appears in search results; WebFetch blocked 403)",
+      "https://libro.daviviendacorredores.com/2023/zoom-a-empresas/celsia/ (third-party Davivienda Corredores analyst; WebFetch blocked 403; is_official=false)",
+      "https://www.casadebolsa.com.co/documents/.../Octubre+2025+Celsia+Investor+Day+2025++Valor+fundamental+ambicioso.pdf (third-party Casa de Bolsa Investor Day 2025 deck; WebFetch failed — DNS ENOTFOUND; not captured)",
+      "WebSearch: 'Celsia ROCE WACC 200 puntos básicos meta por qué invertir'",
+      "WebSearch: 'Celsia resultados 2022 ROCE 14.33% WACC 13.02% diferencial 131 puntos básicos'",
+      "WebSearch: 'Celsia asamblea 2024 spread ROIC WACC 118 puntos básicos servicios de energía EnergizarC'",
+      "WebSearch: 'Celsia Tesorito Zona Franca Termoflores gas térmica TIR retorno objetivo hurdle rate' (no gas/thermal project return target found)"
+    ],
+    "verification_notes": "Re-checked all three drafted figures. Corrections made: (1) Item 2 (118 bps ROIC-WACC spread) had scope='company-wide' — this is WRONG; the target is explicitly for the Energy Services ('Servicios de energía') segment, so scope corrected to segment-level. (2) Tightened the FY2022 verbatim quote to match the fuller wording returned in search ('...a pesar del fuerte incremento de las tasas de interés, Celsia mantuvo un diferencial positivo de 131 puntos básicos...'). (3) source_type for item 1 changed from 'website / press release' to 'website' (it is the IR web page). is_gas_specific=false confirmed accurate for all three — none is tied to gas; no gas/thermal-project hurdle exists to reclassify. is_official=true retained for all three (all are celsia.com official URLs). All three figures were substantiated by WebSearch snippets that reproduce the exact text of the cited official URLs: the >200 bps ROCE-over-WACC objective, the FY2022 WACC 13.02%/ROCE 14.33%/+131 bps, and the >118 bps Energy Services spread all confirmed verbatim. LINKS THAT FAILED: every celsia.com URL, the Davivienda Corredores libro pages, and the Grupo Argos integrated-report PDF return proxy 403s — confirmed as organization egress-POLICY denials (proxy /__agentproxy/status logs 'www.celsia.com:443 gateway answered 403 to CONNECT (policy denial)'), not site WAF blocks and not fixable this session; per proxy rules these must not be routed around. The Casa de Bolsa Investor Day 2025 PDF failed with DNS ENOTFOUND. Because no primary document could be opened, no figure could be page/slide-cited directly, so confidence is held at medium for all three (unchanged from draft). No well-supported figure was deleted; no new unsupported figure was added. A reviewer with unrestricted network access should open the official IR page and the 2024/2025 Reporte Integrado / Investor Day 2025 deck to page-cite the exact wording and confirm the current WACC level and whether the >200 bps objective is quoted pre- or post-tax."
+  },
+  {
+    "company_name": "AES Brasil Operacoes SA",
+    "ticker": "AESO3 BZ",
+    "status": "company_wide_hurdle_or_wacc",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "target return range (unlevered contracted return / ROIC-type, i.e. project IRR)",
+        "value": "12% to 15% (data-center PPAs at the 'higher end' of the range; management framed development toward the upper half)",
+        "scope": "group-level",
+        "is_gas_specific": false,
+        "basis": "Unlevered / contracted-return basis (multiple independent transcript summaries describe this as AES's '12%-15% unlevered returns guidance range' for renewable/PPA investments; analyst framed the question as 'contracted ROIC or unlevered returns'). Currency USD (parent group, AES Corporation). Real vs nominal: not stated. Pre-tax vs post-tax: not stated.",
+        "date_of_statement": "AES Corporation Q3 2025 earnings call, 5 November 2025",
+        "source_type": "earnings call transcript",
+        "source_url": "https://www.insidermonkey.com/blog/the-aes-corporation-nyseaes-q3-2025-earnings-call-transcript-1641160/",
+        "source_detail": "AES Corporation (parent) Q3 2025 earnings call, 5 Nov 2025 — Q&A. Analyst Dimple Gosai (Bank of America) asked how the contracted ROIC / unlevered returns on recent data-center PPAs compared to the legacy book; CEO Andres Gluski answered that returns tend to be at the higher end of the 12%-15% range. Official event is the AES Q3 2025 earnings webcast (aes.com/investors). VERIFICATION: the cited insidermonkey URL and every alternate full-transcript host (theglobeandmail.com, fool.com, seekingalpha.com, investing.com, aol.com, finance.yahoo.com, alphaspread.com, tipranks.com) returned HTTP 403 proxy/policy denials on direct WebFetch, so wording could not be read from the primary page. The figure and framing were corroborated across three independent WebSearch result summaries.",
+        "verbatim_quote": "Corroborated across independent transcript summaries: on returns for recent data-center PPAs, 'The returns on these tend to be at the higher end of our 12% to 15% [range].' Characterized elsewhere as AES's '12%-15% unlevered returns guidance range' for renewable-energy investments/PPAs. English original. (Exact verbatim sentence not read from a primary page — all transcript hosts 403-blocked; wording reconstructed from multiple concordant search summaries.)",
+        "is_official": true,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "regulated / regulatory return (ANEEL WACC embedded in the plant's tariff/CVU)",
+        "value": "7.16% (described as a real return, already net of taxes)",
+        "scope": "named gas project",
+        "is_gas_specific": true,
+        "basis": "Real, post-tax ('real index foreseen for generators, based on WACC, already discounting taxes'), BRL. This is a regulator-set (ANEEL) WACC used in the Uruguaiana gas-fired thermal plant's variable-cost/tariff (CVU) calculation, NOT a hurdle rate stated by AES. In the underlying 2015 dispute the generator had applied a 10% rate and ANEEL imposed 7.16%, so 7.16% is ANEEL's figure, expressly not AES's own return expectation. Levered/unlevered: not stated (regulatory WACC).",
+        "date_of_statement": "ANEEL determination for the AES Uruguaiana gas-fired thermal plant; the 7.16% vs 10% dispute references February 2015. Plant divested by AES in 2020. Exact determination date not confirmed from an official AES source.",
+        "source_type": "news (reporting an ANEEL regulatory determination) — third party",
+        "source_url": "https://www.canalenergia.com.br/noticias/4931313/aneel-mantem-taxa-de-retorno-de-uruguaiana-em-716",
+        "source_detail": "CanalEnergia article 'Aneel mantem taxa de retorno de Uruguaiana em 7,16%'. Reports ANEEL keeping the regulatory return for the Uruguaiana gas thermal plant at 7.16% (real, WACC-based, net of taxes) in the CVU calculation, over the generator's applied 10% rate. The CanalEnergia page returned a 403 proxy denial on direct WebFetch; wording confirmed via WebSearch result summary. Third-party source; regulator-set figure, not AES's own investment hurdle; AES/AES Brasil divested Uruguaiana in 2020.",
+        "verbatim_quote": "Per the source summary (Portuguese, translated): the 7.16% 'is the real index foreseen for generators, based on the calculation of WACC (weighted average cost of capital), already discounting taxes; the CVU was calculated based on a regulatory return rate of 7.16% per year' — versus the 10% rate the generator had applied. Full primary-page verbatim not accessible (page 403-blocked); wording confirmed via WebSearch summary.",
+        "is_official": false,
+        "confidence": "low"
+      }
+    ],
+    "summary_note": "No hurdle rate stated by the listed entity AES Brasil (AESO3/AESB3) itself was found in accessible sources. AES Brasil was absorbed into Auren Energia and delisted in 2024, and had already pivoted to renewables (its thermal assets, including the Uruguaiana gas plant, were sold in 2020). The CVM electronic filing system (rad.cvm.gov.br), where the Formulario de Referencia lives, remains blocked by the org egress proxy (403), so the reference form could not be opened.\n\nBEST OFFICIAL FIGURE (group-level, NOT gas-specific): The controlling parent, AES Corporation, publicly states a 12%-15% return range for its renewables/PPA (incl. data-center PPA) development, described in independent transcript summaries as an 'unlevered returns guidance range.' On its Q3 2025 earnings call (5 Nov 2025), management said data-center PPA returns are at the 'higher end' of that range. Currency USD; real/nominal and pre/post-tax not stated. Scope=group-level, is_gas_specific=false. Confidence medium: the statement is from AES's official earnings webcast and is corroborated across multiple independent transcript summaries, but every primary transcript/deck page (insidermonkey, theglobeandmail, fool, seekingalpha, investing, aol, yahoo, alphaspread, tipranks, q4cdn PDF) returned 403 proxy denials, so the exact verbatim sentence could not be read from a primary document.\n\nGAS-SPECIFIC (secondary, low confidence, third-party): A 7.16% ANEEL regulatory return (real, net of taxes, WACC-based) applied to the Uruguaiana gas-fired thermal plant's tariff/CVU. Re-verification confirmed this is a regulator-set figure from a 2015 dispute in which the generator had applied 10% and ANEEL imposed 7.16% — so it is explicitly NOT AES's own stated hurdle. Reported by third-party CanalEnergia (page 403-blocked; confirmed via search summary), and relates to an asset AES divested in 2020. Recorded with is_official=false, confidence=low.\n\nNo AES-stated hurdle rate explicitly for new-build/brownfield gas generation was found. No AES Brasil company-specific WACC or target IRR was found in accessible official sources.",
+    "sources_checked": [
+      "WebSearch: AES Corporation Q3 2025 '12% to 15%' returns / higher end / upper half / data center PPA / Gluski (multiple queries)",
+      "WebSearch: AES Corporation renewables '12% to 15%' unlevered returns guidance range (confirmed unlevered basis + renewables scope via Seeking Alpha / Simply Wall St summaries)",
+      "WebSearch: Aneel taxa de retorno Uruguaiana 7,16% WACC CVU AES (confirmed regulatory figure, real, net of taxes, vs generator's 10%)",
+      "https://www.insidermonkey.com/blog/the-aes-corporation-nyseaes-q3-2025-earnings-call-transcript-1641160/ (403 on WebFetch)",
+      "https://www.theglobeandmail.com/investing/markets/stocks/AES/pressreleases/35927080/the-aes-aes-q3-2025-earnings-call-transcript/ (403 on WebFetch)",
+      "https://www.alphaspread.com/security/nyse/aes/investor-relations/earnings-call/q3-2025 (403 on WebFetch)",
+      "https://www.investing.com/news/transcripts/earnings-call-transcript-aes-q3-2025-sees-eps-beat-stock-rises-93CH-4334561 (403 on WebFetch)",
+      "https://www.aol.com/articles/aes-aes-q3-2025-earnings-164544452.html (403 on WebFetch)",
+      "https://finance.yahoo.com/news/aes-aes-q3-2025-earnings-164544398.html (403 on WebFetch)",
+      "https://www.tipranks.com/news/press-releases/aes-reports-record-sales-with-data-center-hyperscalers (403 on WebFetch)",
+      "https://seekingalpha.com/news/4516294-aes-reaffirms-2025-guidance-and-targets-4-gw-of-new-ppas-amid-46-percent-renewables-ebitda (corroborating summary via WebSearch)",
+      "https://www.canalenergia.com.br/noticias/4931313/aneel-mantem-taxa-de-retorno-de-uruguaiana-em-716 (403 on WebFetch; confirmed via WebSearch summary)",
+      "rad.cvm.gov.br / www.rad.cvm.gov.br (CVM filings incl. AES Brasil Formulario de Referencia — blocked by proxy, 403)"
+    ],
+    "verification_notes": "Re-checked both draft figures via WebSearch + WebFetch on 2026-07-31.\n\nDIRECT-FETCH STATUS: Every cited primary/transcript URL returned HTTP 403 (proxy/policy denial) on WebFetch — insidermonkey, theglobeandmail, alphaspread, investing.com, aol, yahoo, tipranks, and canalenergia all failed to load directly, matching the draft's reported proxy blocks. No primary page could be read; verification therefore relies on multiple independent WebSearch result summaries.\n\nITEM 1 (12%-15% AES Corp): CORROBORATED and slightly refined. Three independent WebSearch summaries confirm (a) the 12%-15% figure, (b) that data-center PPA returns are at the 'higher end' of it, (c) that it is characterized as AES's 'unlevered returns guidance range' for renewable/PPA investments, and (d) the Q3 2025 (5 Nov 2025) call context with Gluski. This supports is_gas_specific=false (renewables/PPA, not gas), scope=group-level (parent AES Corporation, not AES Brasil), and the unlevered basis. Left is_official=true (genuine official AES earnings-call statement) and confidence=medium (primary sentence not read from a primary page). Adjusted the value/quote wording to the phrasing actually corroborated ('higher end of 12% to 15%') and flagged that the exact verbatim was reconstructed from concordant summaries, not read verbatim.\n\nITEM 2 (7.16% Uruguaiana): CORROBORATED as accurate, and materially strengthened the annotation. Search confirms 7.16% is ANEEL's regulator-set return (real, WACC-based, already net of taxes) for the Uruguaiana gas thermal plant's CVU, arising from a ~Feb 2015 dispute in which the generator had applied 10% and ANEEL imposed 7.16%. This confirms it is expressly NOT AES's own hurdle rate — AES's implied preference was actually 10%, which is not itself a formally stated hurdle, so no new figure was added. is_gas_specific=true is correct (Uruguaiana is gas-fired); is_official=false and confidence=low are correct. Refined date_of_statement to reference the 2015 dispute.\n\nSTATUS: Kept as company_wide_hurdle_or_wacc. The only AES-stated figure is the parent's group-level renewables return range; the gas-specific 7.16% is a regulator's number, not an AES hurdle, so 'gas_specific_hurdle' would overstate it.\n\nNO figures deleted; NO unsupported figures added. Overall confidence: medium on the group-level 12-15% (well corroborated but primary pages unreadable), low on the Uruguaiana 7.16% (third-party, regulatory, divested asset). No AES Brasil entity-specific hurdle rate or WACC located in any accessible official source; CVM reference-form system remained proxy-blocked."
+  },
+  {
+    "ticker": "ENLASA CI",
+    "company_name": "Energia Latina SA (Enlasa)",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No stated hurdle rate, target IRR, minimum return, ROIC/ROE target, spread-over-WACC, or company-stated WACC could be located for Energia Latina SA / its operating subsidiary Enlasa Generacion Chile S.A. This is consistent with the expectation for a small backup/peaking diesel-and-gas generator that does not publish investor-day-style return frameworks.\n\nSOURCING LIMITATION: The primary official-source hosts were reachable only via web-search snippets, not full text, because the session egress proxy returned HTTP 403 (organization policy CONNECT denials) on every direct fetch of enlasa.com, www.cmfchile.cl, and humphreys.cl. Per proxy policy these denials were not routed around. As a result I could not read the full text of (a) the CMF bond-line prospectus ('Prospecto de Emision de Bonos Desmaterializados', ENLASA GENERACION CHILE S.A., RUT 76.009.328), (b) the Memoria Anual / Estados Financieros (which would carry any impairment 'tasa de descuento'), or (c) the risk-rating reports. Snippets surfaced only bond-line mechanics (two UF 10 million lines, 10- and 30-year terms; use of proceeds = refinance liabilities / finance investment program / general corporate purposes) and rating narrative (Category 'AA', stable outlook, EBITDA 'floor' ~USD 10m) — none of which states an investment hurdle, target return, or WACC.\n\nWhat was checked: (1) enlasa.com investor relations and financial-information pages; (2) CMF Chile issuer registry for Enlasa Generacion Chile S.A. (RUT 76.009.328): prospecto de bonos, informacion financiera/EEFF, memorias, inscripcion titulos de deuda; (3) CMF bond prospectus PDF (ver_sgd.php); (4) Humphreys Nov-2024 rating report for the new bond line; (5) ICR Chile and CMF risk-classification pages; (6) targeted Spanish searches for TIR / tasa interna de retorno / retorno esperado / tasa de descuento / WACC tied to Enlasa. The only return figure encountered was a THIRD-PARTY computed ROE of ~4.1% (Simply Wall St) — a derived ratio, not a company-stated hurdle, so not recorded as a disclosure. No gas-specific, thermal-project, PPA, or company-wide stated hurdle was found. Recommend a direct read of the CMF prospectus and latest Memoria/EEFF (impairment discount-rate note) from an unblocked network to fully confirm.",
+    "sources_checked": [
+      "enlasa.com investor relations page (https://www.enlasa.com/inversionistas/) - blocked by egress proxy (HTTP 403), snippet only",
+      "enlasa.com financial information pages (informacion-financiera-latina-sa / informacion-financiera-enlasa-sa) - blocked (HTTP 403), snippet only",
+      "CMF Chile issuer registry for Enlasa Generacion Chile S.A., RUT 76.009.328 - prospecto de emision de bonos corporativos page - blocked (HTTP 403), snippet only",
+      "CMF Chile - Informacion Financiera / Estados Financieros (EEFF) pages for RUT 76.009.328 - blocked (HTTP 403), snippet only",
+      "CMF bond prospectus PDF 'Prospecto de Emision de Bonos Desmaterializados' (cmfchile.cl ver_sgd.php) - blocked (HTTP 403)",
+      "Humphreys rating report, Enlasa Generacion, Nov 2024 new bond-line issue (humphreys.cl PDF) - blocked (HTTP 403), snippet only",
+      "ICR Chile classification page for Enlasa Generacion Chile S.A. (icrchile.cl) - snippet only",
+      "CMF risk-classification document (cmfchile.cl recri PDF) - blocked (HTTP 403), snippet only",
+      "Web searches (Spanish + English) for hurdle rate / target IRR / TIR / retorno esperado / tasa de descuento / WACC tied to Enlasa - no company-stated figure returned",
+      "Simply Wall St (third-party) ROE ~4.1% - derived metric, not a company hurdle; not recorded as disclosure"
+    ]
+  },
+  {
+    "ticker": "AXIA3 BZ",
+    "company_name": "Axia Energia SA (formerly Centrais Eletricas Brasileiras SA - Eletrobras)",
+    "status": "company_wide_hurdle_or_wacc",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "regulated (RAB) WACC",
+        "value": "7.89% real, after taxes (2025 ANEEL transmission/generation regulatory cycle); ~12.12% pre-tax real (i.e., IPCA + ~12.12%)",
+        "scope": "transmission",
+        "is_gas_specific": false,
+        "basis": "post-tax AND real (regulatory WACC as defined by ANEEL); currency BRL; applied over an IPCA-indexed regulatory remuneration base (RAB), so effectively IPCA + ~12.12% on a pre-tax basis. Now confirmed as a REAL after-tax rate (the draft had left real/nominal ambiguous).",
+        "date_of_statement": "ANEEL 2025 tariff cycle (rate in effect from 1 March 2025; superseded by 8.00% from 1 March 2026 per ANEEL's March 2026 WACC update)",
+        "source_type": "regulatory filing",
+        "source_url": "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026/aneel-atualiza-taxa-regulatoria-de-remuneracao-do-capital-wacc-regulatorio",
+        "source_detail": "Official ANEEL (Brazilian electricity regulator) communication on the regulatory WACC. The March 2026 update sets transmission/generation regulatory WACC at 8.00% real after-tax (12.11% pre-tax), described as a +0.11 percentage-point increase over the prior (2025) cycle, which therefore was 7.89% real after-tax. Sector-wide value applying to all Brazilian transmission concessionaires including AXIA/Eletrobras transmission and Law 12.783/13 quota-regime assets. Corroborated by poder360.com.br and cenarioenergia.com.br coverage. NOTE: this is a sector-wide REGULATORY WACC set by the regulator, not an internal investment hurdle chosen by the company; included as the benchmark ANEEL WACC that AXIA's own materials reference (AXIA Q4 2025 investor slides describe its regulated transmission WACC as 'IPCA + 12.12%').",
+        "verbatim_quote": "PT (paraphrase of ANEEL communication, via poder360/cenarioenergia): 'A taxa regulatoria real apos impostos foi definida em 8,10% para o segmento de distribuicao e 8,00% para transmissao e geracao. Antes dos impostos, os percentuais chegam a 12,28% e 12,11%, respectivamente. Em relacao ao ciclo anterior, houve aumento de 0,07 ponto percentual no WACC aplicado a distribuicao e de 0,11 ponto percentual para transmissao e geracao.' EN: 'The real after-tax regulatory rate was set at 8.10% for distribution and 8.00% for transmission and generation. Pre-tax, the percentages reach 12.28% and 12.11% respectively. Versus the previous cycle, there was an increase of 0.07pp for distribution and 0.11pp for transmission and generation.' [Implies prior/2025 transmission WACC = 8.00% - 0.11pp = 7.89% real after-tax.] Note: I could not open ANEEL's page directly (HTTP 403 via WebFetch); text is from WebSearch summaries of the official ANEEL release and Brazilian energy press.",
+        "is_official": false,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "regulated (RAB) return / WACC",
+        "value": "ANEEL-defined regulatory WACC for Law 12.783/13 assets (transmission, quota-regime hydro, Eletronuclear); no company-specific percentage stated in the Eletrobras SEC disclosure itself",
+        "scope": "transmission",
+        "is_gas_specific": false,
+        "basis": "ANEEL regulatory WACC (real, after taxes per ANEEL methodology); the Eletrobras SEC filing text located did not itself restate pre/post-tax, real/nominal, or currency. Methodology set by ANEEL Resolution 874/2020 (WACC methodology) / REN 918/2021 (calculation procedure for Law 12.783/13 concessions).",
+        "date_of_statement": "recurring disclosure in Eletrobras SEC filings (Form 20-F and quarterly 6-K market-letter annexes, 2021-2022)",
+        "source_type": "regulatory filing",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1439124/000129281421001692/ebr20210422_6k.htm",
+        "source_detail": "Eletrobras Form 6-K market-letter annex / Form 20-F, transmission concession compensation and regulatory framework section. COULD NOT be opened for page-level verification: SEC.gov returned HTTP 403 to WebFetch on every attempt. The substance is corroborated: ANEEL Resolution 874/2020 approving the updated WACC methodology (2020) and REN 918/2021 defining WACC for Law 12.783/13 transmission and quota-regime generation (incl. Eletronuclear) are confirmed via ANEEL/press sources. This is a regulator-set RAB WACC, not an internal company hurdle, and no specific percentage appears in the company disclosure located.",
+        "verbatim_quote": "Reconstructed (NOT independently verified at the SEC page, which returned 403): 'Compensation for transmission concessions is determined through WACC, the weighted average cost of capital, defined by ANEEL... Resolution No. 874/2020 established the WACC to be applied to the investment for (i) transmission assets, hydroelectric plants subject to the physical guarantee and power quota regime (Law No. 12,783/13), and (ii) Eletronuclear.'",
+        "is_official": true,
+        "confidence": "low"
+      }
+    ],
+    "summary_note": "No GAS-specific hurdle rate was found, consistent with Axia/Eletrobras having divested its gas thermal generation. No company-chosen numeric investment hurdle (target IRR, minimum IRR, spread-over-WACC, ROIC/ROCE/ROE target, or internal company-wide WACC) was located in any official source; AXIA's capital-allocation messaging (methodology approved December 2024, Strategic Plan) remains qualitative ('capital discipline', 'value creation', 'rigorous criteria'). The only hurdle-type figures the company references are the ANEEL-defined REGULATED WACC governing its transmission and Law 12.783/13 quota-regime (hydro + Eletronuclear) assets. Re-verification CONFIRMED the 7.89% value: ANEEL's official March 2026 WACC update set transmission/generation regulatory WACC at 8.00% real after-tax (12.11% pre-tax), a +0.11pp rise over the prior 2025 cycle, implying the 2025 transmission WACC was 7.89% real after-tax. The draft's ambiguity on real/nominal is now resolved: it is a REAL, after-tax, BRL WACC (~IPCA + 12.12% pre-tax, matching how AXIA's own Q4 2025 slides describe its regulated transmission WACC). Both figures are sector-wide regulatory RAB WACC set by the regulator, not internal hurdles; neither is gas-specific. TOOLING LIMITATION: WebFetch returned HTTP 403 for every destination host tried (sec.gov, ri.taesa.com.br, investing.com, gov.br/ANEEL, cenarioenergia.com.br), and mziq.com/CVM/archive.org remain egress-blocked, so no page/slide-level primary PDF could be opened; all confirmations are from WebSearch summaries of official ANEEL releases and reputable Brazilian energy press. The exact SEC 6-K/20-F wording (figure 2 in this list) could not be independently confirmed and is marked low confidence.",
+    "sources_checked": [
+      "WebSearch: Axia/Eletrobras strategic plan, capital allocation methodology (Dec 2024), ROIC/WACC/IRR/hurdle targets",
+      "WebSearch: ANEEL WACC regulatorio transmissao/geracao 2025 vs 2026, 7,89% / 8,00%, real apos impostos",
+      "WebSearch: ANEEL Resolucao Normativa 874/2020 and 918/2021, Lei 12.783/13 quota-regime WACC, Eletronuclear",
+      "WebSearch: AXIA Q4 2025 investor presentation / earnings call, ROIC/spread/WACC/value-creation, IPCA + 12.12% regulated WACC, 2026-27 capex R$12-14bn",
+      "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026/aneel-atualiza-taxa-regulatoria-de-remuneracao-do-capital-wacc-regulatorio (official ANEEL WACC update; WebFetch 403, content via WebSearch summary): transmission/generation 8.00% real after-tax 2026, +0.11pp vs prior => 7.89% for 2025",
+      "https://www.poder360.com.br/poder-energia/aneel-eleva-taxa-de-retorno-do-setor-eletrico-para-2026/ (corroboration; WebFetch 403, via WebSearch)",
+      "https://cenarioenergia.com.br/2026/03/05/aneel-wacc-regulatorio-2026-remuneracao-investimento-setor-eletrico/ (corroboration; WebFetch 403, via WebSearch)",
+      "https://ri.taesa.com.br/en/taesa/regulatory-environment/ (original draft source for 7.89%; WebFetch 403, could not open)",
+      "https://www.sec.gov/Archives/edgar/data/1439124/000129281421001692/ebr20210422_6k.htm (Eletrobras 6-K, transmission WACC/Res.874-2020; WebFetch 403, not verifiable at page level)",
+      "https://www.stocktitan.net/sec-filings/EBR/6-k-brazilian-electric-power-co-current-report-foreign-issuer-facc239e215d.html (SEC 6-K mirror; WebFetch 403)",
+      "https://www.investing.com/news/company-news/axia-energia-q4-2025-slides-net-income-soars-141-growth-phase-begins-93CH-4532046 (AXIA Q4 2025 slides; WebFetch 403, via WebSearch: 'regulated WACC of IPCA + 12.12%')",
+      "https://www.seudinheiro.com/2020/empresas/aneel-aprova-metodologia-para-atualizacao-de-wacc-para-setor-eletrico/ (confirms ANEEL 2020 WACC methodology approval, context for Res. 874/2020)"
+    ],
+    "verification_notes": "Re-checked both draft figures. (1) The 7.89%-after-taxes transmission WACC is CONFIRMED and its basis CORRECTED/UPGRADED: it is a REAL, after-tax, BRL regulatory WACC (not merely 'after taxes' with real/nominal unstated). Confirmation is stronger than the draft's third-party-only basis: ANEEL's official March 2026 update states transmission/generation regulatory WACC = 8.00% real after-tax (12.11% pre-tax) with a +0.11pp increase over the prior cycle, which arithmetically yields 7.89% for the 2025 cycle. I therefore replaced the primary source_url from the TAESA third-party page (which I could not open, HTTP 403) to the official ANEEL gov.br release, and added poder360/cenarioenergia as corroboration. is_official kept FALSE because the value originates from the regulator/press, not from an AXIA/Eletrobras company document; confidence raised from low to medium (value well-corroborated, but it is a sector benchmark, not a company-chosen hurdle). Added the pre-tax equivalent (~IPCA + 12.12%), which matches how AXIA's own Q4 2025 investor slides describe the regulated transmission WACC. (2) The qualitative ANEEL-WACC / Resolution 874/2020 reference: the cited SEC 6-K URL returned HTTP 403 to WebFetch on every attempt, so I could NOT verify the verbatim quote or exact page; the quote remains reconstructed. I lowered its confidence from medium to LOW and annotated the non-verifiability. The underlying substance is independently corroborated (ANEEL approved the updated WACC methodology in 2020; REN 918/2021 sets the WACC calculation for Law 12.783/13 transmission and quota-regime generation including Eletronuclear), so the item is retained rather than removed. is_gas_specific=false is correct for both (both are transmission/regulated-asset WACC; AXIA divested gas). No new numeric internal hurdle (ROIC/IRR/spread target) was found in any official source, so none was added; status kept as company_wide_hurdle_or_wacc since the only disclosed hurdle-type figures are regulatory WACC. Overall confidence: value of figure 1 (7.89%) high; its status as a company hurdle low; figure 2 low (source unopenable). Main limitation: environment-wide WebFetch 403s prevented any page/slide-level primary-document verification; all confirmations rest on WebSearch summaries of official ANEEL releases and reputable energy press."
+  },
+  {
+    "ticker": "AURE3 BZ",
+    "company_name": "Auren Energia SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated hurdle rate, target IRR, minimum return, spread over WACC, ROIC/ROE target, or company-disclosed WACC could be verified from any official Auren Energia source. Auren is Brazil's 3rd-largest generator with a 100% renewable portfolio (hydro + wind/solar) plus energy trading, and essentially no gas exposure, so no gas-specific or thermal-specific hurdle exists. IMPORTANT ACCESS LIMITATION: The organization's egress policy blocked (HTTP 403 at the CONNECT stage, confirmed in the agent-proxy failure log) every official Auren channel I attempted: (1) the Auren IR site ri.aurenenergia.com.br (presentations page and reference-form page); (2) the official filing host api.mziq.com (Formulario de Referencia PDF and 1Q26 earnings release); (3) CVM's filing repositories rad.cvm.gov.br / www.rad.cvm.gov.br; and (4) the Vortx-hosted 3Q25 financial statements PDF (arquivos-vx-informa.vortx.com.br). Third-party earnings-call transcript hosts (investing.com, gurufocus.com) were also 403-blocked. I therefore could not read verbatim official wording (including any impairment/value-in-use discount rate that the audited financial statements would normally disclose, which is the most likely place a company-stated discount rate exists for Auren). All WACC/IRR/ROIC numbers I located are THIRD-PARTY analyst/data-vendor calculations, NOT company-stated, and are intentionally excluded from the disclosures array: Alpha Spread computed WACC 16.81% (Ke 17.02%, Kd 15.23%, debt weight 63.71%); GuruFocus computed WACC 9.98% and ROIC 2.57%; Safra used a nominal Ke ~14.0% (up from 12.5%) in its DCF and, separately, cited a ~13% estimated IRR on the stock; XP cited a real implied IRR of 11.9%; Citi cited an implied real IRR of ~12.4%. These are external valuation inputs, not Auren's own investment hurdle, so they do not satisfy the official-source requirement. Recommendation for verification once access is available: pull the latest Formulario de Referencia (item on risk factors / capital) and, more promisingly, the notes to the audited annual/quarterly financial statements (teste de recuperabilidade / impairment note), which would state the discount rate/WACC used for value-in-use; also review the AES Brasil acquisition materials (May 2024) for any stated synergy NPV discount rate or target return.",
+    "sources_checked": [
+      "ri.aurenenergia.com.br/en/financial-results/presentations/ (Auren IR presentations page) - BLOCKED HTTP 403 by egress policy",
+      "ri.aurenenergia.com.br/en/cvm-filings/reference-form-auren/ (Formulario de Referencia landing) - BLOCKED HTTP 403",
+      "api.mziq.com Auren filing host (Formulario de Referencia PDF and 1Q26 release) - BLOCKED HTTP 403",
+      "rad.cvm.gov.br / www.rad.cvm.gov.br (CVM filing repository) - BLOCKED HTTP 403 per proxy log",
+      "arquivos-vx-informa.vortx.com.br Auren 3Q25 financial statements PDF (DF 2025) - BLOCKED HTTP 403",
+      "investing.com Auren Q1 2026 earnings call transcript - BLOCKED HTTP 403",
+      "gurufocus.com Q3 2025 Auren earnings call transcript and ROIC page - BLOCKED HTTP 403",
+      "WebSearch (multiple queries, EN + PT) on Auren WACC / TIR alvo / hurdle / target return / impairment discount rate - returned only third-party analyst figures (Alpha Spread, GuruFocus, Safra, XP, Citi), no company-stated figure"
+    ]
+  },
+  {
+    "ticker": "GEB CB",
+    "company_name": "Grupo Energia Bogota SA ESP",
+    "status": "gas_specific_hurdle",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "regulated (RAB) WACC for gas transport",
+        "value": "11.88% (raised from 10.94%); rate rolled back / refund ordered by CREG in 2026",
+        "scope": "gas transport",
+        "is_gas_specific": true,
+        "basis": "pre-tax (antes de impuestos), real (pesos constantes / constant COP)",
+        "date_of_statement": "Resolución CREG 102 002 de 2023 (approved CREG session 1271, 2 June 2023). Base rate/methodology: Resolución CREG 103 de 2021 (10.94% en pesos constantes antes de impuestos). CORRECTION: draft cited 'CREG 004/175 de 2021' as the base — the 10.94% base rate is actually from Resolución CREG 103 de 2021 (Res. 175 de 2021 is a separate general remuneration methodology).",
+        "source_type": "regulatory filing",
+        "source_url": "https://www.minenergia.gov.co/es/sala-de-prensa/noticias-index/gobierno-ordena-devolver-mas-de-150-mil-millones-a-usuarios-de-gas-natural-por-cobros-adicionales-en-transporte/",
+        "source_detail": "Regulator-set (CREG) WACC applied to gas transport activity, applicable to TGI (GEB's Colombian gas-transport subsidiary) and Promigas. Resolución CREG 102 002 de 2023 raised the tasa de descuento from 10.94% to 11.88% (increase justified by the 35% income-tax rate under Ley 2277 de 2022). Figure corroborated across multiple official/press sources: Ministerio de Minas y Energía, Forbes Colombia, Infobae, El Colombiano, Semana, El Nuevo Siglo. Primary CREG pages (gestornormativo.creg.gov.co originals + htm, suin-juriscol.gov.co) all returned HTTP 403 to automated fetch, so no verbatim pull from the primary CREG document was possible. IMPORTANT: this is a regulator-set RAB return, NOT an investment hurdle rate independently declared by GEB. In March 2026 CREG upheld appeals, ordered the WACC reduced and ~COP 150bn overcharged (2023-present) refunded to users, so the 11.88% rate is rolled back / under dispute.",
+        "verbatim_quote": "\"...un incremento en la tasa de descuento del costo de capital (WACC), que pasó de 10,94% a 11,88% en 2023 mediante la Resolución CREG 102 002, permitiendo a empresas transportadoras como TGI —filial del Grupo de Energía de Bogotá— incrementar costos en la componente de transporte.\" / \"CREG Resolution 103 of 2021 with a WACC of 10.94% in constant pesos before taxes\" (\"...an increase in the discount rate / cost of capital (WACC), which went from 10.94% to 11.88% in 2023 via CREG Resolution 102 002, allowing transport companies such as TGI —subsidiary of Grupo de Energía de Bogotá— to increase costs in the transport component\"; base rate of 10.94% set by CREG Resolution 103 of 2021, expressed in constant pesos before taxes). Source: Ministerio de Minas y Energía / El Nuevo Siglo / Infobae reporting on the CREG resolutions; primary CREG resolution text not directly retrievable (HTTP 403).",
+        "is_official": true,
+        "confidence": "medium"
+      },
+      {
+        "metric_type": "sell-side analyst valuation WACC for GEB business units (third-party, NOT company-stated)",
+        "value": "~10.3% (attributed to 2024 valuation, UNVERIFIED); ~11.3% average for 2023 (corroborated), with ~10.4% for Enel Colombia",
+        "scope": "group-level",
+        "is_gas_specific": false,
+        "basis": "not stated (Beta 0.55x for energy companies; gas-distribution beta reported as 0.83x for the 2023 exercise — draft's '0.7x' could not be corroborated)",
+        "date_of_statement": "Davivienda Corredores 'Zoom a las Empresas – GEB' (2023 edition corroborated; 2024 edition figure of ~10.3% not independently verifiable)",
+        "source_type": "investor presentation",
+        "source_url": "https://libro.daviviendacorredores.com/2023/zoom-a-empresas/geb/",
+        "source_detail": "THIRD-PARTY / SELL-SIDE ANALYST report (Davivienda Corredores), not a GEB official disclosure. Corroborated figures (via search summaries; direct fetch 403): an ~11.3% average WACC applied to TGI, Cálidda, Dunas, Transmisión and Gebbras, and ~10.4% for Enel Colombia, with a Beta of 0.55x for energy companies and 0.83x for gas-distribution companies — these appear in the 2023 exercise. The draft's specific claim of ~10.3% for 2024 (down from 11.3%) and a 0.7x gas-distribution beta could NOT be independently corroborated; both the 2023 and 2024 Davivienda pages returned HTTP 403. This is an analyst's valuation WACC, not confirmed verbatim from GEB's own Reporte Integrado or estados financieros (GEB official pages also 403).",
+        "verbatim_quote": "\"...un WACC promedio de 11.3% para las unidades de TGI, Cálidda, Dunas, Transmisión y Gebbras, dejando con un WACC de 10.4% a Enel Colombia\" with \"...una Beta (u) de 0.55x para compañías de energía y 0.83x para compañías de distribución de gas\" (\"...an average WACC of 11.3% for the TGI, Cálidda, Dunas, Transmisión and Gebbras units, leaving Enel Colombia with a WACC of 10.4%\"; Beta of 0.55x for energy companies and 0.83x for gas-distribution companies). Paraphrased from Davivienda Corredores 'Zoom a las Empresas – GEB'; exact page text not directly retrievable (HTTP 403). The ~10.3%/2024 figure in the draft was not corroborated.",
+        "is_official": false,
+        "confidence": "low"
+      }
+    ],
+    "summary_note": "A GAS-SPECIFIC regulated return exists and is confirmed: TGI (GEB's Colombian gas-transport subsidiary) is remunerated under a regulated (RAB) WACC set by the sector regulator CREG. Resolución CREG 102 002 de 2023 raised this gas-transport WACC from 10.94% to 11.88%, expressed in constant COP before tax. CORRECTION to the draft: the base 10.94% rate comes from Resolución CREG 103 de 2021 (not 'CREG 004/175 de 2021'). This is a regulator-set RAB WACC, NOT an investment hurdle that GEB independently declares, though it is the return framework governing GEB's gas-transport assets. IMPORTANT: in March 2026 CREG upheld appeals, ordered the WACC reduced and ~COP 150bn overcharged (2023-present) refunded to users, so the 11.88% rate is rolled back / under regulatory dispute. For Peru, Cálidda's gas-distribution return is set by Osinergmin under a VNR/tariff framework, but no specific stated WACC figure was retrievable. On a group basis, a WACC of ~11.3% (2023) applied to TGI/Cálidda/Dunas/Transmisión/Gebbras and ~10.4% to Enel Colombia is reported — but only via a THIRD-PARTY sell-side report (Davivienda Corredores), not verbatim in GEB's own official documents; the draft's ~10.3%/2024 figure and 0.7x gas-distribution beta could not be corroborated (the corroborated gas-distribution beta is 0.83x for 2023). NO company-stated investment hurdle rate / target IRR / minimum return / spread-over-WACC / ROIC-ROCE-ROE target was found in accessible official GEB materials. LIMITATION: GEB's official investor site (grupoenergiabogota.com) and all primary CREG/suin-juriscol resolution pages returned HTTP 403 to automated retrieval, so no verbatim quote could be pulled from a primary GEB or CREG document; findings rest on multi-source official/press corroboration (Min. Minas y Energía, Forbes, Infobae, El Colombiano, Semana, El Nuevo Siglo) plus a third-party analyst report. Manual review of GEB's Reporte Integrado 2024 and consolidated estados financieros (deterioro discount-rate note) is recommended to confirm GEB's own stated WACC and any group investment hurdle verbatim.",
+    "sources_checked": [
+      "Davivienda Corredores 'Zoom a las Empresas – GEB' 2024 (https://libro.daviviendacorredores.com/2024/zoom-a-empresas/geb/) — HTTP 403 on direct fetch",
+      "Davivienda Corredores 'Zoom a las Empresas – GEB' 2023 (https://libro.daviviendacorredores.com/2023/zoom-a-empresas/geb/) — HTTP 403 on direct fetch; content via search summary (WACC 11.3% units / 10.4% Enel; beta 0.55x energy / 0.83x gas distribution)",
+      "Resolución CREG 102 002 de 2023 originals (gestornormativo.creg.gov.co/.../Resolucion_CREG_102_002_2023/ and resolucion_creg_102-2_2023.htm) — HTTP 403",
+      "RESOLUCION 102-002 DE 2023 (suin-juriscol.gov.co/viewDocument.asp?id=30046839) — HTTP 403",
+      "Ministerio de Minas y Energía press release on refund/WACC rollback (minenergia.gov.co) — HTTP 403 on direct fetch; content via search summary",
+      "Infobae articles on CREG WACC increase and 2026 refund order (2026-03-04, 2026-03-08) — via search",
+      "Forbes Colombia, El Colombiano, Semana, El Nuevo Siglo on CREG refund order and 10.94%→11.88% WACC — via search",
+      "Corroboration that base 10.94% rate is from Resolución CREG 103 de 2021, en pesos constantes antes de impuestos — via search",
+      "GEB investor relations / centro de resultados (grupoenergiabogota.com/inversionistas/centro-de-resultados) — HTTP 403",
+      "GEB estados financieros / deterioro discount-rate note — searched, not directly retrievable (403)",
+      "GEB Reporte Integrado 2024 — referenced via search; PDF not directly retrievable",
+      "Osinergmin tariff filings for Cálidda (Peru gas distribution) — searched; no specific stated WACC retrieved"
+    ],
+    "verification_notes": "RE-CHECKED both draft items. Every cited URL that could be fetched returned HTTP 403 (GEB official site, all CREG/suin-juriscol resolution pages, both Davivienda pages, minenergia, Infobae), so verification relied on WebSearch result summaries plus multi-source cross-checking.\n\nITEM 1 (gas-transport RAB WACC): FIGURE AND BASIS CONFIRMED. The 10.94%→11.88% increase, the source (Resolución CREG 102 002 de 2023, session 1271 of 2 June 2023), the gas-transport scope, TGI as GEB's affected subsidiary, and the basis (pesos constantes antes de impuestos / constant COP, pre-tax) are all corroborated by independent official/press sources (Min. Minas y Energía, Forbes, Infobae, El Colombiano, Semana, El Nuevo Siglo). CORRECTIONS MADE: (a) base rate/methodology attribution — draft said 'CREG 004/175 de 2021'; the 10.94% base is actually from Resolución CREG 103 de 2021 (Res. 175/2021 is a separate general methodology), corrected. (b) Added the material 2026 development — CREG upheld appeals, ordered the WACC reduced and ~COP 150bn refunded, so the 11.88% rate is now rolled back / disputed; value field annotated. (c) Replaced the draft's loosely-sourced verbatim quote with corroborated wording actually found in the sources. is_gas_specific=true and scope='gas transport' verified correct. is_official kept true (regulatory source, not analyst/news) but flagged that it is a regulator-set RAB return, not a GEB-declared hurdle. Confidence held at medium (figure well corroborated, but primary CREG doc not directly readable AND rate now under rollback).\n\nITEM 2 (Davivienda valuation WACC): PARTIALLY SUPPORTED, DOWNGRADED. This is a third-party sell-side analyst source (is_official=false, correct). The ~11.3% average WACC for TGI/Cálidda/Dunas/Transmisión/Gebbras and ~10.4% for Enel Colombia are corroborated, but they map to the 2023 exercise, and the corroborated gas-distribution beta is 0.83x — NOT the 0.7x in the draft. The draft's headline claim of ~10.3% for 2024 (down from 11.3%) could NOT be independently corroborated (both Davivienda pages 403). CORRECTIONS MADE: relabeled metric_type to make clear it is a third-party analyst valuation WACC (not GEB-stated); switched source_url to the 2023 page (the only edition with corroborated content); fixed basis note (beta 0.83x, not 0.7x, for the corroborated year); annotated that the 2024 figure is unverified. is_gas_specific=false and scope=group-level verified correct. Confidence kept low.\n\nSTATUS retained as 'gas_specific_hurdle' because a gas-specific regulated return figure does exist and is verified — with the caveat (noted throughout) that it is a regulator-set RAB WACC rather than a company-declared investment hurdle. No GEB company-stated investment hurdle / target IRR / minimum return / ROIC-ROCE-ROE target was found in any accessible official source. No figures deleted; no new figures added. Overall confidence: MEDIUM for the gas-transport WACC figure itself, LOW for the group valuation WACC, with the standing caveat that no primary GEB or CREG document could be read verbatim due to 403 blocks."
+  },
+  {
+    "ticker": "ENMT4 BZ",
+    "company_name": "Energisa Mato Grosso - Distribuidora de Energia SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated investment hurdle rate, target IRR, or WACC found. Energisa MT is a regulated electricity DISTRIBUTOR (no gas-fired generation or gas infrastructure). The listed entity does not publish a standalone investor deck; disclosure is at the parent Grupo Energisa (ENGI11) level. Checked: Grupo Energisa IR portal (energisa.com.br/categorias/investidores), general web/press coverage of Energisa's 1Q26 results (adjusted EBITDA R$1.981bn) and JPMorgan/XP analyst notes on regulatory WACC. No official Energisa document states an internal hurdle/target IRR/spread-over-WACC. As a regulated distributor its allowed return is the ANEEL regulatory WACC (RAB), which is regulator-set, not company-stated, and not gas-specific. Third-party analyst references to sector TIRs (~10.9%) and infrastructure IRRs of 8-12% are generic, not company figures. No gas-specific figure exists.",
+    "sources_checked": [
+      "Grupo Energisa Investor Relations portal: https://www.energisa.com.br/categorias/investidores",
+      "Web search: Energisa Formulário de Referência / WACC / custo de capital / TIR",
+      "InfoMoney coverage of Energisa (JPMorgan/XP regulatory WACC notes): https://www.infomoney.com.br/mercados/utilities-jpmorgan-revisa-setor-energia-e-saneamento-e-destaca-suas-2-acoes-preferidas/"
+    ]
+  },
+  {
+    "ticker": "EQMA3B BZ",
+    "company_name": "Equatorial Maranhao Distribuidora de Energia SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated numeric hurdle rate, target IRR, or WACC found. Equatorial Maranhao is a regulated electricity DISTRIBUTOR (no gas-fired generation/gas infrastructure); it does not publish standalone investor decks, so disclosure would be at parent Grupo Equatorial (EQTL3) level. Checked Grupo Equatorial's Feb/26 Corporate Presentation (HTTP 403, not readable) and multiple 2025-2026 earnings-call transcripts (Q1 2025 gurufocus, Q3 2025 investing.com — both returned HTTP 403 and could not be read directly). From accessible search summaries, management repeatedly emphasizes QUALITATIVE 'disciplined capital allocation' and skipping water/sewage auctions with 'unattractive returns,' and disclosed a REALIZED IRR of >37%/yr (MOIC 8.3x) on the sale of eight transmission companies (equity value R$6.4bn). None of these is a forward-looking stated hurdle rate/target IRR/WACC, so nothing qualifies. No gas-specific figure. The realized 37% transmission-sale IRR is an outcome metric, not a hurdle, so it is not recorded as a disclosure.",
+    "sources_checked": [
+      "Grupo Equatorial Corporate Presentation Feb/26 (mziq CDN, HTTP 403 - not readable): https://api.mziq.com/mzfilemanager/v2/d/62b21cba-838c-49a4-aaef-e0fb2350c169/b360bd3c-d708-c5d3-eb30-a2bcc1e1dab0",
+      "Equatorial Q3 2025 earnings call transcript (investing.com, HTTP 403): https://www.investing.com/news/transcripts/earnings-call-transcript-equatorial-energias-q3-2025-steady-growth-and-strategic-shifts-93CH-4357371",
+      "Equatorial Q1 2025 earnings call transcript (gurufocus, HTTP 403): https://www.gurufocus.com/news/2871756/q1-2025-equatorial-sa-earnings-call-transcript",
+      "Quartr EQTL3 IR summary: https://quartr.com/companies/equatorial-energia-sa_6195"
+    ]
+  },
+  {
+    "ticker": "GEPA4 BZ",
+    "company_name": "Rio Paranapanema Energia SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated hurdle rate, target IRR, or WACC found. Rio Paranapanema Energia is a pure HYDRO generator (operates ~10 hydroelectric plants), no gas exposure. It is a low-liquidity B3 name (China Three Gorges group) with minimal investor communication and no dedicated investor deck/earnings call program. Checked market-data aggregators (StatusInvest, Investidor10, Suno, InfoMoney) and searches for its Formulário de Referência — these show operational/dividend/return-ratio data (e.g. historical share returns, ROA) but no company-stated investment hurdle, target IRR, or WACC. No official disclosure of an internal required return was located. No gas-specific figure (company has no gas assets).",
+    "sources_checked": [
+      "StatusInvest GEPA4: https://statusinvest.com.br/acoes/gepa4",
+      "Investidor10 GEPA4: https://investidor10.com.br/acoes/gepa4/",
+      "Suno Analitica GEPA4: https://www.suno.com.br/analitica/acoes/gepa4/",
+      "Web search: Rio Paranapanema Formulário de Referência / taxa de retorno"
+    ]
+  },
+  {
+    "ticker": "CEBR5 BZ",
+    "company_name": "Companhia Energetica de Brasilia (CEB)",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No company-stated hurdle rate, target IRR, or WACC found. CEB is a Federal-District-controlled holding whose activities center on electric power generation, public lighting, and minority interests; after divesting its distribution arm (CEB-D, now Neoenergia Brasilia) it is a small holding with limited investor communication and no gas-fired generation/gas infrastructure. Checked CEB's official site/investor documents (ceb.com.br) including a 2025 corporate document, plus market-data aggregators (Nord, AUVP Analitica, AnaliseDeAcoes, VisnoInvest). These provide fundamentals (margins, liquidity, net debt/EBITDA ~0) but no company-stated investment hurdle, target IRR, ROIC/ROE target, or WACC. No official required-return disclosure located. No gas-specific figure.",
+    "sources_checked": [
+      "CEB official site / documents: https://www.ceb.com.br/listgroup.aspx?idCanal=D0mlLqYnKldOCQKkP4Skqg%3D%3D",
+      "CEB 2025 corporate document (ceb.com.br Download): https://www.ceb.com.br/Download.aspx?Arquivo=SMI+28szs7yf9fukeED2YA%3D%3D",
+      "Nord Investimentos CEBR5 fundamentals: https://www.nordinvestimentos.com.br/fundamentos/empresas/cebr5/",
+      "AUVP Analitica CEBR5: https://analitica.auvp.com.br/acoes/CEBR5"
+    ]
+  },
+  {
+    "ticker": "PUNTILLA CI",
+    "company_name": "Electrica Puntilla SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No stated hurdle rate, target return, target/minimum IRR, WACC, ROIC/ROE target, or PPA required return could be found in the company's official materials. Electrica Puntilla is a small Chilean run-of-river/hydro holding (subsidiaries Inversiones Puntilla, Hidroelectrica Nuble SpA, Electrica El Baul SpA); it is not a gas company. I located but could NOT open (egress-policy 403 on all direct fetches) the following official documents: (1) Memoria Anual 2024 (Memoria-EPSA-2024.pdf on electricapuntilla.cl, published Apr 2025); (2) the company's CMF Chile filing registry (RUT 96817230) including Analisis Razonado and IFRS estados financieros; the company files under NCG 461. These annual reports/financial statements would, if anywhere, contain only an IFRS impairment 'tasa de descuento' rather than an investment hurdle rate; I was unable to verify any specific value from official text. Targeted searches for 'tasa de descuento / WACC / costo de capital' tied to Puntilla returned no company-stated figure. No investor presentations or earnings calls exist for this micro-cap.",
+    "sources_checked": [
+      "https://www.electricapuntilla.cl/wp-content/uploads/2025/04/Memoria-EPSA-2024.pdf (Memoria Anual 2024 - located, fetch blocked by egress policy 403)",
+      "https://www.cmfchile.cl/institucional/mercados/entidad.php?mercado=V&rut=96817230&tipoentidad=RVEMI&vig=VI&control=svs (CMF Chile filing registry for Electrica Puntilla SA, RUT 96817230 - located, fetch blocked)",
+      "https://www.cmfchile.cl/institucional/inc/inf_financiera/ifrs/ (Analisis Razonado IFRS - located, fetch blocked)"
+    ]
+  },
+  {
+    "ticker": "WIG JA",
+    "company_name": "Wigton Energy Ltd (formerly Wigton Windfarm Ltd)",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No official company-stated hurdle rate, target IRR, minimum return, WACC, or ROIC/ROE target was found. Wigton is a Jamaican wind generator (62.7 MW, three farms), not a gas company; it sells output to Jamaica Public Service (JPS) under long-term PPAs to 2036 (PPA extended by 3 years). The most relevant official document is the Wigton Windfarm Limited IPO Prospectus (dated Apr 2019, issued by Petroleum Corporation of Jamaica), located at jamstockex.com but not openable (egress 403). Its dividend POLICY is 'up to 25% of profits available for distribution' (a payout policy, not a return hurdle). Third-party IPO analyses (NCB Capital Markets, JN Fund Managers) ran DCF valuations (NCB fair value ~J$0.60/share vs J$0.50 offer; JN projected ~4.06% dividend yield and a ~95.67% 1-yr total return) but these broker estimates are NOT company-stated hurdle rates and were not captured. No stated required-return/WACC for its PPAs was found in reachable materials. Also checked: company investor-relations and reports pages (wigtonenergy.com) - located, fetch blocked.",
+    "sources_checked": [
+      "https://www.jamstockex.com/wp-content/uploads/2019/04/Wigton-Windfarm-Limited-Prospectus-Updated-2019-04-08.pdf (2019 IPO Prospectus - located, fetch blocked by egress policy 403)",
+      "https://wigtonenergy.com/reports/ (Reports / annual reports page - located, fetch blocked)",
+      "https://wigtonenergy.com/investor-relations/ (Investor Relations - located, fetch blocked)",
+      "Third-party DCF analyses (NCB Capital Markets, JN Fund Managers) - reviewed via search snippets; not official, not a company hurdle rate"
+    ]
+  },
+  {
+    "ticker": "PEHUEN CI",
+    "company_name": "Empresa Electrica Pehuenche SA",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [
+      {
+        "metric_type": "WACC (third-party computed, ultimate-parent level)",
+        "value": "~8.0-8.8% (post-tax, nominal, USD; analyst-computed)",
+        "scope": "group-level",
+        "is_gas_specific": false,
+        "basis": "post-tax, nominal; USD; analyst-computed (not stated by the company)",
+        "date_of_statement": "as of 2026 (third-party data services)",
+        "source_type": "website",
+        "source_url": "https://www.gurufocus.com/term/wacc/NYSE:ENIC/WACC-/Enel-Chile",
+        "source_detail": "GuruFocus / AlphaSpread WACC pages for Enel Chile SA (ENIC), the ultimate listed parent of Pehuenche via Enel Generacion Chile. GuruFocus: WACC 8.8%; AlphaSpread: WACC ~8.08%, cost of equity ~8.85%, cost of debt ~6.84%, debt weight ~38%. This is a computed figure, NOT a company-disclosed hurdle rate.",
+        "verbatim_quote": "GuruFocus: 'Enel Chile WACC %: 8.8%'. AlphaSpread: 'Enel Chile's current Cost of Equity is 8.85%, while its WACC stands at 8.08%; cost of debt is 6.84%.' [Third-party analyst-computed WACC, not a company-stated hurdle rate; grandparent/group level, not gas-specific.]",
+        "is_official": false,
+        "confidence": "low"
+      }
+    ],
+    "summary_note": "No company-stated hurdle rate / target IRR / stated WACC specific to Pehuenche (or gas) was found in reachable official sources; Pehuenche is a Chilean hydro subsidiary of Enel Generacion Chile (installed capacity: Pehuenche 570 MW, Curillinque 89 MW, Loma Alta 40 MW), not gas. The only WACC figure available is a THIRD-PARTY analyst-computed WACC (~8-8.8%, post-tax nominal USD) for the ultimate listed parent Enel Chile (ENIC) - recorded above with is_official=false and confidence=low; it is not a company hurdle and not gas-specific. I located but could not open (egress 403): (1) PEHUENCHE Memoria Anual Integrada 2024/2025 on enel.cl; (2) Pehuenche estados financieros on enel.cl/CMF; (3) Enel Generacion Chile estados financieros (Mar/Sep 2025). Enel Generacion Chile financial statements contain an IFRS impairment 'tasa de descuento' for non-financial assets, but I could not extract the value from official text (note: a Pehuenche interim report stated 'no indicators of impairment,' so no impairment discount rate was applied there). No investor deck or earnings call disclosing a Pehuenche-level investment hurdle was found.",
+    "sources_checked": [
+      "https://enel.cl/content/dam/enel-cl/inversionistas/enel-generacion-chile/filiales/pehuenche-sa/reportes/memorias/2025/PEHUENCHE-Memoria-anual-integrada-2025.pdf (Pehuenche integrated annual report - located, fetch blocked by egress policy 403)",
+      "https://www.enel.cl/en/investors/investor-enel-generacion/subsidiaries/pehuenche-sa/annual-reports.html (Pehuenche annual reports index - located, fetch blocked)",
+      "https://www.enel.cl/content/dam/enel-cl/inversionistas/enel-generacion-chile/informacion-para-el-accionista/resultados-trimestrales/estados-financieros/2025/Estados-Financieros-Enel-Generacion-Chile-092025.pdf (Enel Generacion Chile EEFF Sep 2025 - located, fetch blocked)",
+      "https://www.gurufocus.com/term/wacc/NYSE:ENIC/WACC-/Enel-Chile (third-party WACC for parent Enel Chile)",
+      "https://www.alphaspread.com/security/nyse/enic/discount-rate (third-party WACC/cost of equity for parent Enel Chile)"
+    ]
+  },
+  {
+    "ticker": "PRMN3B BZ",
+    "company_name": "Produtores Energeticos de Manso SA - PROMAN",
+    "status": "none_found",
+    "hurdle_rate_disclosures": [],
+    "summary_note": "No stated hurdle rate, target IRR (TIR), minimum return, WACC/custo de capital, or ROIC/ROE target was found in PROMAN's official materials. PROMAN is a small Brazilian hydro generator (Manso HPP, Mato Grosso), CVM code 1251-3, not gas. I located but could NOT open (egress 403 on all direct fetches and CVM RAD blocked by policy) the relevant official filings: (1) Formulario Cadastral / FCA 2025 (FCA-Proman-2025.pdf, Jun 2025); (2) ITR 1T2025 (ITR-Proman-2025-1o.pdf); (3) 2023/2024 Balanco and Relatorio da Administracao (Monitor Mercantil legal publications); (4) AGO minutes 28-04-2025 and RCA 24-03-2025. A micro-cap hydro of this type typically discloses no investment hurdle rate; the Formulario de Referencia, if it addressed capital cost at all, would do so only qualitatively. Targeted searches for 'TIR / taxa de retorno / WACC / custo de capital' tied to PROMAN returned no company-stated figure. Note: I could not reach rad.cvm.gov.br to inspect the full Formulario de Referencia text, so a stated figure buried there cannot be fully excluded.",
+    "sources_checked": [
+      "https://promanmt.com.br/wp_mnunes/wp-content/uploads/2025/06/FCA-Proman-2025.pdf (Formulario Cadastral 2025 - located, fetch blocked by egress policy 403)",
+      "https://promanmt.com.br/wp_mnunes/wp-content/uploads/2025/06/ITR-Proman-2025-1o.pdf (ITR 1Q2025 - located, fetch blocked)",
+      "https://promanmt.com.br/wp_mnunes/wp-content/uploads/2025/03/ATA-RCA-24.03.2025.pdf (RCA minutes Mar 2025 - located, fetch blocked)",
+      "https://publicidadelegal.monitormercantil.com.br/wp-content/uploads/2024/03/PRODUTORES-ENERGETICOS-DE-MANSO-S.A.-%E2%80%93-PROMAN-Balanco-2023.pdf (2023 Balanco - located, fetch blocked)",
+      "https://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/FormBuscaPartic.aspx?TpConsulta=16 (CVM Formulario de Referencia search - located; rad.cvm.gov.br blocked by egress policy)"
+    ]
+  }
+]
