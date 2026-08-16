@@ -94,22 +94,17 @@ Then run the script again.
 
 ## Step 3: install the build tool
 
-We use PlatformIO, which downloads the compiler for your specific chip and
-builds from a config file checked into this repo — so the build is reproducible
-rather than depending on menu settings you have to remember.
+You need something that can compile code and send it to the board. Use the
+**Arduino IDE** — it is the friendliest option and what nearly every ESP-32
+tutorial online assumes.
 
-Easiest route: install the **PlatformIO IDE** extension in VS Code.
+**→ Follow [ARDUINO_IDE.md](ARDUINO_IDE.md) for that, then come back here at
+step 4 for the wiring.**
 
-Command line alternative:
-
-```bash
-pip install platformio
-```
-
-> Already comfortable with the Arduino IDE from your kit's instructions? That
-> works too — `firmware/src/main.cpp` is ordinary Arduino code. Install the
-> ESP32 board support package, install the **Adafruit SSD1306** and **Adafruit
-> GFX** libraries from Library Manager, and paste the file in as a sketch.
+There is also a `platformio.ini` in this repo, which builds the same sketch
+from the command line. Both tools read the same source file, so there is one
+copy of the code. Use whichever you like; the Arduino IDE is the recommended
+starting point.
 
 ## Step 4: wire up the screen (if your kit has an I2C OLED)
 
@@ -135,10 +130,12 @@ common pin pairs and reports which one your screen actually answered on.
 
 ## Step 5: flash the bring-up sketch
 
-Substitute the env the identify script recommended:
+In the Arduino IDE: press **→** to upload, then open the **Serial Monitor** at
+**115200**. Full walkthrough in [ARDUINO_IDE.md](ARDUINO_IDE.md).
+
+From the command line instead:
 
 ```bash
-cd firmware
 pio run -e esp32dev -t upload
 pio device monitor
 ```
@@ -146,7 +143,7 @@ pio device monitor
 `pio run` compiles, `-t upload` writes it to the board, `pio device monitor`
 opens the serial output so you can read what the board says.
 
-The first build downloads a compiler toolchain — expect a few minutes once,
+Either way, the first build downloads a compiler — expect a few minutes once,
 then seconds thereafter.
 
 ## Step 6: read the output

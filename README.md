@@ -36,18 +36,25 @@ means changing what is displayed rarely requires reflashing.
 ## Layout
 
 ```
-firmware/            PlatformIO project for the ESP-32
-  platformio.ini     build config; esp32dev is the target
-  src/main.cpp       bring-up sketch
+desk_display_bringup/
+  desk_display_bringup.ino   the sketch; opens in the Arduino IDE as-is
+platformio.ini               command-line build of that same sketch
 tools/
-  identify_board.py  reports which board and USB bridge are attached
+  identify_board.py          reports which board and USB bridge are attached
 docs/
-  BRINGUP.md         step-by-step first-time setup
+  ARDUINO_IDE.md             Arduino IDE setup, start here
+  BRINGUP.md                 wiring and first-run walkthrough
 ```
+
+The sketch lives in an Arduino sketch folder and PlatformIO points at it, so
+both toolchains build one copy of the source rather than two that drift.
 
 ## Getting started
 
-New to this? Start with [docs/BRINGUP.md](docs/BRINGUP.md).
+New to this? Read [docs/ARDUINO_IDE.md](docs/ARDUINO_IDE.md), then
+[docs/BRINGUP.md](docs/BRINGUP.md).
+
+Command-line route, if you prefer it:
 
 ```bash
 pip install pyserial esptool platformio
@@ -56,7 +63,6 @@ pip install pyserial esptool platformio
 python3 tools/identify_board.py
 
 # Build and flash.
-cd firmware
 pio run -e esp32dev -t upload
 pio device monitor
 ```

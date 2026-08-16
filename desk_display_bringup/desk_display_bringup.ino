@@ -1,12 +1,18 @@
 // Bring-up sketch for the desk display project.
 //
 // This does not know what board it is running on, and that is the point. Flash
-// it, open the serial monitor at 115200, and it reports the chip, the flash,
+// it, open the Serial Monitor at 115200, and it reports the chip, the flash,
 // the MAC, and every I2C device it can find across the pin pairs these starter
 // kits commonly wire an OLED to. If it finds an SSD1306 it draws to it.
 //
-// The output of this sketch is what tells us which platformio.ini env to keep
-// and which display driver the real firmware should use.
+// Builds in either the Arduino IDE (open this folder's .ino) or PlatformIO
+// (`pio run -e esp32dev -t upload` from the repo root). Keep it compiling in
+// both -- see docs/ARDUINO_IDE.md.
+//
+// Requires these libraries (Arduino IDE: Library Manager; PlatformIO: already
+// listed in platformio.ini):
+//   Adafruit SSD1306
+//   Adafruit GFX Library
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -17,6 +23,12 @@
 #include <WiFi.h>
 #elif defined(ARDUINO_ARCH_ESP8266)
 #include <ESP8266WiFi.h>
+#endif
+
+// PlatformIO injects the env name as a build flag. The Arduino IDE has no
+// equivalent, so give it a value there rather than failing to compile.
+#ifndef PIO_ENV_NAME
+#define PIO_ENV_NAME "arduino-ide"
 #endif
 
 // ---------------------------------------------------------------------------
@@ -127,6 +139,13 @@ static void printChipIdentity() {
 
 // Returns the number of devices answering on the given pair.
 static uint8_t scanPair(const PinPair &pair) {
+#if defined(ARDUINO_ARCH_ESP32)
+  // Release the bus first: on ESP32, begin() on an already-started Wire does
+  // not reliably move the peripheral to the new pins, so every pair after the
+  // first would silently rescan the first pair's pins. ESP8266's Wire has no
+  // end(), but its begin() does reassign pins, so it needs no equivalent.
+  Wire.end();
+#endif
   Wire.begin(pair.sda, pair.scl);
   // A stuck bus reads as a full house of ACKs; a slow clock is more forgiving
   // of the long dupont jumpers these kits ship with.
