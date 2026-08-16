@@ -1,0 +1,9 @@
+# PlatformIO
+firmware/.pio/
+.pio/
+.vscode/
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
