@@ -15,6 +15,39 @@ You need to do steps 1–3 exactly once, ever. After that, flashing is one butto
 ## 1. Install the Arduino IDE
 
 Download version 2.x from [arduino.cc/en/software](https://www.arduino.cc/en/software).
+The download page offers a donation first — "Just Download" is free and is the
+same software.
+
+**macOS.** Open the `.dmg`, drag Arduino IDE to Applications. On first launch
+macOS may refuse to open it because it came from the internet: right-click the
+app and choose **Open**, then confirm. (Right-click → Open works where a normal
+double-click is blocked.)
+
+Your board will most likely also need a USB driver — macOS is the OS most
+likely to need one. If no port appears in step 5, install the
+[CH34x driver from WCH](https://www.wch-ic.com/downloads/CH341SER_MAC_ZIP.html)
+and reboot.
+
+**Windows.** Run the `.exe` installer and accept the driver-installation
+prompts that appear during it — those are the USB-serial drivers, and skipping
+them is the usual reason no COM port shows up later. Your board appears as
+`COM3`, `COM4`, or similar.
+
+**Linux.** Download the AppImage, then make it executable:
+
+```bash
+chmod +x arduino-ide_*.AppImage
+./arduino-ide_*.AppImage
+```
+
+There is one extra step, and without it the board will not appear even though
+it is plugged in and working — your user needs permission to open serial ports:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+Then **log out and back in** for it to take effect.
 
 ## 2. Teach it about ESP-32 boards
 

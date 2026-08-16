@@ -26,7 +26,7 @@ means changing what is displayed rarely requires reflashing.
 
 | Piece | State |
 | ----- | ----- |
-| Bring-up firmware (chip ID, I2C scan, blink, OLED hello) | written, not yet flashed |
+| Bring-up firmware (chip ID, I2C scan, blink, OLED hello) | compiles for `esp32:esp32:esp32` (core 2.0.9), not yet flashed |
 | Board identification tool | written, tested |
 | WiFi + broker polling | not started |
 | Broker service | not started |
