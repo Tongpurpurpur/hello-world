@@ -87,16 +87,45 @@ and are never the board.
 
 ### If no serial ports are found
 
+There are two quite different causes, and one command separates them. On macOS:
+
+```bash
+system_profiler SPUSBDataType
+```
+
+This lists every USB device the Mac can see, whether or not a driver exists for
+it. Look for an entry like `USB2.0-Serial`, `USB Single Serial`, `CH340`,
+`CP2102 USB to UART Bridge Controller`, or `USB JTAG/serial debug unit`.
+
+**The board IS listed here, but no `/dev/cu.*` entry exists.**
+The cable and the board are fine; macOS just has no driver to expose it as a
+serial port. Install the
+[CH34x driver from WCH](https://www.wch-ic.com/downloads/CH341SER_MAC_ZIP.html),
+reboot, and check again. On recent macOS the install is also blocked until you
+approve it under **System Settings → Privacy & Security** — scroll to the
+bottom for a message about blocked system software and click **Allow**. Missing
+that step is why the driver often appears to install and change nothing.
+
+**The board is NOT listed.** No driver will help, because nothing is arriving.
 In order of likelihood:
 
-1. Charge-only USB cable. Try another cable.
-2. Missing driver for the bridge chip:
-   - CH340/CH9102: install the WCH driver (needed on macOS, sometimes Windows).
-   - CP2102: built into modern macOS, Linux, and Windows 11.
-3. On Linux, your user may not be allowed to open serial ports:
-   ```bash
-   sudo usermod -aG dialout $USER    # then log out and back in
-   ```
+1. **Charge-only USB cable.** By far the most common. Many cables carry power
+   but no data lines at all. The board lights up and looks perfectly healthy.
+   A lit power LED is not evidence of a working cable — it is exactly what a
+   charge-only cable looks like. Try a different cable, ideally one you know
+   has carried data (a phone sync cable that shows up in Finder).
+2. **A hub or adapter in the way.** Plug directly into the Mac. Some USB-C
+   dongles do not pass through serial devices reliably.
+3. **Too much current being drawn** by something on the breadboard, causing the
+   port to shut down. Disconnect everything except the board itself.
+4. **The board's USB port or bridge chip is faulty.** Rare, but these are cheap
+   boards. Suspect this only after trying two known-good cables.
+
+On Linux, a port that exists but is invisible to the IDE is usually permissions:
+
+```bash
+sudo usermod -aG dialout $USER    # then log out and back in
+```
 
 ### If the port is found but esptool cannot connect
 
