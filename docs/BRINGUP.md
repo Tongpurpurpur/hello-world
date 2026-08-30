@@ -71,6 +71,20 @@ The script only reads. It cannot modify or damage the board.
 **Copy the whole output into the chat.** That is what tells me which firmware
 target to keep and which of the candidate configs to delete.
 
+### Checking for the port without installing anything (macOS)
+
+Before reaching for any script: open **Terminal** and run
+
+```bash
+ls /dev/cu.*
+```
+
+Unplug the board, run it again, and compare. The line that disappears is your
+board. Plug it back in and run it a third time to confirm it returns.
+
+`/dev/cu.Bluetooth-Incoming-Port` and `/dev/cu.debug-console` are always there
+and are never the board.
+
 ### If no serial ports are found
 
 In order of likelihood:
@@ -124,6 +138,23 @@ get destroyed.
 | SCL      | GPIO22| D1 (GPIO5)        |
 
 Use **3V3, not 5V**. The ESP's pins are 3.3V parts and 5V can damage them.
+
+### Your module may not use those exact names
+
+Vendors label the same four pins differently. These are all the same thing:
+
+| Also printed as | Means | Connect to |
+| --------------- | ----- | ---------- |
+| `VDD`, `VCC`, `3V3`, `+`  | power in | **3V3** |
+| `GND`, `VSS`, `-`         | ground   | GND |
+| `SCL`, `SCK`, `SCX`, `CLK`| clock    | GPIO21's partner, GPIO22 |
+| `SDA`, `SDI`, `DATA`      | data     | GPIO21 |
+
+**Match by name, never by position.** Pin *order* is not standardised — some
+modules are `GND VDD SCK SDA`, others are `VDD GND SCL SDA`. Two modules that
+look identical from across the desk can have power and ground in opposite
+places, and wiring the second like the first is the single most common way to
+cook one.
 
 If your wiring differs from the table, do not worry — the sketch scans several
 common pin pairs and reports which one your screen actually answered on.
