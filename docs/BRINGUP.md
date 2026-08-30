@@ -97,6 +97,32 @@ This lists every USB device the Mac can see, whether or not a driver exists for
 it. Look for an entry like `USB2.0-Serial`, `USB Single Serial`, `CH340`,
 `CP2102 USB to UART Bridge Controller`, or `USB JTAG/serial debug unit`.
 
+It can take ten or twenty seconds to print. If it returns *nothing at all*, try
+the lower-level view instead:
+
+```bash
+ioreg -p IOUSB -w0 -l | grep -i "USB Product Name"
+```
+
+On Apple Silicon the built-in keyboard and trackpad are not USB devices, so
+genuinely empty output is possible and does not by itself mean the command
+failed.
+
+#### Validate the test before trusting it
+
+An empty result is only meaningful if the command works at all. Plug in any
+other USB device you own — a phone, a mouse, a memory stick — and run the same
+command again:
+
+- **The other device appears, the board does not.** The test works, and the
+  board really is not enumerating. Cable first, then the board itself.
+- **Nothing appears for either.** The test is not telling you anything. Suspect
+  the port, the dongle, or how the command was run, and switch to the GUI:
+  **Apple menu → About This Mac → More Info → System Report → USB**.
+
+Checking your instrument against a known-good device before drawing conclusions
+from it is worth the thirty seconds, here and generally.
+
 **The board IS listed here, but no `/dev/cu.*` entry exists.**
 The cable and the board are fine; macOS just has no driver to expose it as a
 serial port. Install the
