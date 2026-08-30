@@ -165,12 +165,70 @@ Paste the output back into the chat and we move on to WiFi and the broker.
 
 ---
 
+## If something gets hot, or smells
+
+**Unplug immediately.** Heat means current is going somewhere it should not,
+and the damage is cumulative — a component that gets hot for five seconds
+usually survives, one left powered for a minute often does not.
+
+Then work through this before reconnecting.
+
+### A hot OLED
+
+In order of likelihood:
+
+1. **VCC and GND are swapped.** This is the overwhelmingly common cause. The
+   module is powered backwards, and reverse polarity turns it into a heater.
+   Check the labels on the screen itself, not the position of the wires —
+   pin order is *not* consistent between modules. Plenty are `GND VCC SCL SDA`,
+   plenty of others are `VCC GND SCL SDA`. Two modules that look identical can
+   differ here.
+
+2. **VCC is on 5V or VIN instead of 3V3.** Some modules tolerate it, some do
+   not. Use the **3V3** pin.
+
+3. **A short across the breadboard.** The two long rails down the sides are
+   continuous strips; the short rows in the middle are connected in groups of
+   five. If VCC and GND end up in the same row, they are shorted together. A
+   wire whose stripped end is a little too long can also bridge two rows.
+
+Feel the screen after five seconds with power on. Warm is acceptable. Hot
+enough that you want to let go is not.
+
+### Is the screen dead?
+
+Possibly, but often not — these panels survive brief reverse polarity more
+often than you would expect. Rewire it correctly and run the bring-up sketch:
+if the I2C scan reports a device at `0x3C`, the controller is alive.
+
+If it stays silent, the module is likely gone. They cost a few dollars and the
+rest of the project is unaffected — the ESP-32 itself is almost certainly fine,
+since the fault was on the module side.
+
+### Red LED on the ESP-32
+
+Not a fault. Nearly every ESP32 devkit has a red power LED that is on solid
+whenever the board has power. It means the board is powered, nothing more.
+
+### Overheating can also hide your board
+
+Worth knowing, because it links two symptoms that look unrelated: a miswired
+module draws more current than the USB port will supply, and the host responds
+by cutting power to the port. macOS may show a "USB device disabled" notice, or
+nothing at all. The board then does not appear under **Tools → Port**, or
+appears and vanishes.
+
+So if the screen was hot *and* the port would not show up, fix the wiring
+first and re-check the port afterwards. One cause, two symptoms.
+
 ## Safety notes, briefly
 
 - Power the board from USB only, at this stage.
 - 3.3V for everything. Not 5V.
 - Never connect a pin directly to GND or 3V3 without knowing what it does.
-- Unplug before rewiring.
+- **Unplug before rewiring.** Every time.
+- Check polarity twice before applying power. It is the one mistake that
+  reliably destroys parts.
 
-None of this is dangerous to you — it is 5V over USB. The risk is to the board,
-and it is modest. These boards are cheap and hard to kill by miswiring a screen.
+None of this is dangerous to you — it is 5V over USB, which cannot hurt you.
+The risk is to the components, and it is real but cheap.

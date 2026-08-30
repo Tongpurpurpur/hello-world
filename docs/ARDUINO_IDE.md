@@ -109,9 +109,30 @@ why that folder exists and why neither it nor the file should be renamed.
   - Linux: `/dev/ttyUSB0`
   - Windows: `COM3`, `COM4`, …
 
-  **No port listed at all?** Do not fight the IDE — see
-  [BRINGUP.md](BRINGUP.md#if-no-serial-ports-are-found). The usual answer is a
-  charge-only USB cable.
+  **On macOS the menu is never empty**, and that is what makes this confusing.
+  `/dev/cu.Bluetooth-Incoming-Port` and `/dev/cu.debug-console` are built into
+  the OS and are present whether or not anything is plugged in. If those are the
+  only entries, your board is *not* being detected, however populated the menu
+  looks. Your board is the one named `usbserial`, `wchusbserial`, or
+  `SLAB_USBtoUART`.
+
+  **Not sure which entry is the board?** Do not guess — watch it appear:
+
+  ```bash
+  pip install pyserial
+  python3 tools/identify_board.py --watch
+  ```
+
+  Leave that running, unplug the board, plug it back in. Whatever appears is
+  the board. This cannot be fooled by a confusing menu.
+
+  **No board-like port at all?** See
+  [BRINGUP.md](BRINGUP.md#if-no-serial-ports-are-found). On macOS the usual
+  answer is the missing CH34x driver, or a charge-only USB cable.
+
+  **A port that appears and then vanishes** usually means an overcurrent
+  shutdown — something on the breadboard is miswired and drawing too much.
+  See [BRINGUP.md](BRINGUP.md#if-something-gets-hot-or-smells).
 
 ## 6. Upload
 

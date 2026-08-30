@@ -38,6 +38,35 @@ KNOWN_USB_IDS = {
     (0x303A, 0x1000): "Espressif USB-JTAG/serial debug unit",
 }
 
+# Ports macOS always shows whether or not anything is plugged in. Seeing only
+# these means the board is not being detected, however full the menu looks.
+NOT_YOUR_BOARD = (
+    "Bluetooth-Incoming-Port",
+    "BLTH",
+    "debug-console",
+    "wlan-debug",
+)
+
+# Fragments that appear in the device name of a real USB-serial board.
+LOOKS_LIKE_A_BOARD = (
+    "usbserial",     # CH340 / generic
+    "wchusbserial",  # CH340 / CH9102 with the WCH driver
+    "SLAB_USBtoUART",  # CP2102 with the Silicon Labs driver
+    "usbmodem",      # native-USB chips (S2/S3/C3)
+    "ttyUSB",
+    "ttyACM",
+)
+
+
+def port_verdict(device: str) -> str:
+    """Say whether a port name is plausibly the board."""
+    if any(noise in device for noise in NOT_YOUR_BOARD):
+        return "built into macOS - NOT your board"
+    if any(hint in device for hint in LOOKS_LIKE_A_BOARD):
+        return "this looks like your board"
+    return "unclear - use --watch to confirm"
+
+
 # Maps what esptool reports to the platformio.ini env to build.
 CHIP_TO_ENV = {
     "ESP32": "esp32dev",
@@ -90,6 +119,7 @@ def describe_ports(ports: list) -> list:
             vidpid = "no usb id (built-in or virtual port)"
 
         print(f"{port.device}")
+        print(f"    verdict:     {port_verdict(port.device)}")
         print(f"    usb id:      {vidpid}")
         print(f"    description: {port.description}")
         if port.manufacturer:
@@ -194,15 +224,70 @@ def interpret(esptool_output: str) -> None:
         print("hold BOOT (sometimes labelled IO0), tap EN/RST, then release BOOT.")
 
 
+def watch_ports() -> int:
+    """Report ports appearing and disappearing, so a replug identifies the board.
+
+    Reading a port list is guesswork; watching one change is proof. Whatever
+    shows up when you plug the board in IS the board.
+    """
+    import time
+
+    try:
+        seen = {p.device for p in list_ports()}
+    except Exception as exc:  # noqa: BLE001
+        print(f"cannot read ports: {exc}")
+        return 1
+
+    print("Ports present right now:")
+    for device in sorted(seen):
+        print(f"  {device}   ({port_verdict(device)})")
+    if not seen:
+        print("  (none)")
+
+    print()
+    print("Now UNPLUG the board, wait two seconds, and PLUG IT BACK IN.")
+    print("Press Ctrl-C when you are done.")
+    print()
+
+    try:
+        while True:
+            time.sleep(0.4)
+            now = {p.device for p in list_ports()}
+
+            for device in sorted(now - seen):
+                print(f"  + APPEARED     {device}")
+                print(f"                 ^ THIS IS YOUR BOARD. Select it in "
+                      f"Tools > Port.")
+            for device in sorted(seen - now):
+                print(f"  - disappeared  {device}")
+                print(f"                 ^ that was the board being unplugged")
+
+            seen = now
+    except KeyboardInterrupt:
+        print()
+        print("stopped.")
+
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", help="skip detection and probe this port")
+    parser.add_argument(
+        "--watch",
+        action="store_true",
+        help="watch ports appear/disappear as you replug, to identify the board",
+    )
     parser.add_argument(
         "--no-probe",
         action="store_true",
         help="list ports only, do not talk to the board",
     )
     args = parser.parse_args()
+
+    if args.watch:
+        hr("watching ports")
+        return watch_ports()
 
     hr("host")
     print(f"{platform.system()} {platform.release()} ({platform.machine()})")
