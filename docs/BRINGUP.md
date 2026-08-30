@@ -140,8 +140,16 @@ In order of likelihood:
    A lit power LED is not evidence of a working cable — it is exactly what a
    charge-only cable looks like. Try a different cable, ideally one you know
    has carried data (a phone sync cable that shows up in Finder).
-2. **A hub or adapter in the way.** Plug directly into the Mac. Some USB-C
-   dongles do not pass through serial devices reliably.
+2. **A hub or adapter in the way.** On a Mac with only USB-C ports, an
+   adapter is unavoidable if the board's cable ends in USB-A — and it becomes a
+   third link that can carry power without data. Test the adapter on its own
+   terms: plug a USB memory stick or a phone through the *same* adapter and see
+   whether it mounts. If it does not, the adapter is the fault and no amount of
+   driver work will help.
+
+   The durable fix is to remove the adapter from the chain entirely with a
+   single **USB-C to Micro-USB** cable (or USB-C to USB-C, if the board has a
+   USB-C socket) rated for data, not just charging.
 3. **Too much current being drawn** by something on the breadboard, causing the
    port to shut down. Disconnect everything except the board itself.
 4. **The board's USB port or bridge chip is faulty.** Rare, but these are cheap
